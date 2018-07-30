@@ -17,7 +17,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import unit.api.PutiCommonModel;
 import unit.entity.HomeCountEntity;
-import unit.moudle.personal.PersonalActivity;
 import unit.moudle.work.PutiWorkCheckActivity;
 import unit.util.UserInfoUtils;
 
@@ -26,7 +25,7 @@ import unit.util.UserInfoUtils;
  * 首页用户统计信息
  */
 
-public class HomeCountHolder extends BaseHolder<HomeCountEntity>{
+public class HomeCountHolder extends BaseHolder<HomeCountEntity> {
 
     @BindView(R.id.week_new_event)
     TextView weekNewEvent;
@@ -34,6 +33,8 @@ public class HomeCountHolder extends BaseHolder<HomeCountEntity>{
     TextView myPost;
     @BindView(R.id.forward_personal_info)
     LinearLayout VForwardPersonalInfo;
+    @BindView(R.id.week_new_event_layout)
+    LinearLayout weekNewEventLayout;
 
     public HomeCountHolder(Context context) {
         super(context);
@@ -43,7 +44,7 @@ public class HomeCountHolder extends BaseHolder<HomeCountEntity>{
     @Override
     protected View initView(Context context) {
         mRootView = InflateService.g().inflate(R.layout.puti_home_count_holder);
-        ButterKnife.bind(this,mRootView);
+        ButterKnife.bind(this, mRootView);
         VForwardPersonalInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,7 +52,7 @@ public class HomeCountHolder extends BaseHolder<HomeCountEntity>{
                 mContext.startActivity(intent);
             }
         });
-        weekNewEvent.setOnClickListener(new View.OnClickListener() {
+        weekNewEventLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, PutiWorkCheckActivity.class);
@@ -64,9 +65,9 @@ public class HomeCountHolder extends BaseHolder<HomeCountEntity>{
     @Override
     protected void updateUI(Context context, HomeCountEntity data) {
 
-       if (data == null){
-           return;
-       }
+        if (data == null) {
+            return;
+        }
         weekNewEvent.setText(String.valueOf(data.getSchoolWeekCount()));
         myPost.setText(String.valueOf(data.getMyWriteCount()));
 
@@ -77,12 +78,12 @@ public class HomeCountHolder extends BaseHolder<HomeCountEntity>{
     public void queryData() {
         if (UserInfoUtils.isInLoginStata()) {
             PutiCommonModel.getInstance().queryCountInfo(
-                    new BaseListener(HomeCountEntity.class){
+                    new BaseListener(HomeCountEntity.class) {
                         @Override
                         public void responseResult(Object infoObj, Object listObj, int code, boolean status) {
                             super.responseResult(infoObj, listObj, code, status);
                             HomeCountEntity entity = (HomeCountEntity) infoObj;
-                            updateUI(mContext,entity);
+                            updateUI(mContext, entity);
                         }
 
                         @Override

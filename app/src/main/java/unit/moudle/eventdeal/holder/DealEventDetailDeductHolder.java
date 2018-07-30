@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.puti.education.R;
 import com.puti.education.base.InflateService;
 import com.puti.education.base.holder.BaseHolder;
+import com.puti.education.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -171,6 +172,9 @@ public class DealEventDetailDeductHolder extends BaseHolder<Event2Involved> {
                 View view = entry.getKey();
                 if (value == true && view instanceof TextView){
                    return Integer.parseInt(((TextView) view).getText().toString());
+                }else {
+                    ToastUtil.show("请选择扣分选项");
+                    return 0;
                 }
             }
         }

@@ -17,13 +17,16 @@ import com.puti.education.util.ToastUtil;
 import com.puti.education.widget.CommonDropView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import unit.api.PutiCommonModel;
 import unit.api.PutiTeacherModel;
+import unit.entity.ClaRecordEntity;
 import unit.entity.ClassSimple;
 import unit.entity.Event;
 import unit.entity.PutiEvents;
 import unit.moudle.eventdeal.view.EventListView;
+import unit.util.UserInfoUtils;
 
 /**
  * Created by lei on 2018/6/17.
@@ -36,47 +39,48 @@ public class EventListPtr implements BaseMvpPtr {
     private Context mContext;
     private EventListView mView;
 
-    private ArrayList<ClassSimple> mClassList;
+    private ArrayList<ClaRecordEntity.ClaHeadRecord> mClassList;
     private String mClassUid;
     public EventListPtr(Context mContext, EventListView mView) {
         this.mContext = mContext;
         this.mView = mView;
+        mClassList = new ArrayList<>();
     }
 
     @Override
     public void star() {
-        queryClass();
+        queryTeaClassRecord();
     }
 
     @Override
     public void stop() {
 
     }
-
-    public void queryClass(){
-        PutiTeacherModel.getInstance().getClass("",new BaseListener(ClassSimple.class){
+    private void queryTeaClassRecord(){
+        PutiTeacherModel.getInstance().queryTeacherRecords(UserInfoUtils.getUid(),new BaseListener(ClaRecordEntity.class){
             @Override
-            public void responseListResult(Object infoObj, Object listObj, PageInfo pageInfo, int code, boolean status) {
-                super.responseListResult(infoObj, listObj, pageInfo, code, status);
-                mClassList = (ArrayList<ClassSimple>) listObj;
-                //默认拉取第一个班级的事件
-                mClassUid = mClassList.get(0).getUID();
-                queryEvent();
-                mView.setClassName(mClassList.get(0).getName());
+            public void responseResult(Object infoObj, Object listObj, int code, boolean status) {
+                ClaRecordEntity entity = (ClaRecordEntity) infoObj;
+                List<ClaRecordEntity.ClaHeadRecord> claHeadRecords = entity.getClaHeadRecords();
+                if (claHeadRecords.size() > 0){
+                    mClassList.clear();
+                    mClassList.addAll(claHeadRecords);
+                    mClassUid = claHeadRecords.get(0).getClassUID();
+                    queryEvent();
+                    mView.setClassName(mClassList.get(0).getClassName());
+                }
             }
 
             @Override
             public void requestFailed(boolean status, int code, String errorMessage) {
-                super.requestFailed(status, code, errorMessage);
                 ToastUtil.show("拉取班级列表失败");
                 mView.hideLoading();
                 mView.showErrorView();
             }
         });
     }
-
     public void queryEvent(){
-        PutiCommonModel.getInstance().queryEvent(mClassUid,-1,1, Integer.MAX_VALUE,new BaseListener(PutiEvents.class){
+        PutiCommonModel.getInstance().queryEvent(mClassUid,1,1, Integer.MAX_VALUE,new BaseListener(PutiEvents.class){
             @Override
             public void responseResult(Object infoObj, Object listObj, int code, boolean status) {
                 PutiEvents events = (PutiEvents) infoObj;
@@ -128,14 +132,14 @@ public class EventListPtr implements BaseMvpPtr {
         ArrayList<String> list = new ArrayList<>();
         int size = mClassList.size();
         for (int i = 0; i < size; i++) {
-            list.add(mClassList.get(i).getName());
+            list.add(mClassList.get(i).getClassName());
         }
         final CommonDropView dropView = new CommonDropView(mContext,view,list);
         dropView.setPopOnItemClickListener(new CommonDropView.PopOnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                mClassUid = mClassList.get(position).getUID();
-                String name = mClassList.get(position).getName();
+                mClassUid = mClassList.get(position).getClassUID();
+                String name = mClassList.get(position).getClassName();
                 mView.setClassName(name);
                 queryEvent();
                 dropView.dismiss();
