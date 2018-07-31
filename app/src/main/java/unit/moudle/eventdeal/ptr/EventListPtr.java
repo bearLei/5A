@@ -104,7 +104,7 @@ public class EventListPtr implements BaseMvpPtr {
         int importEventCount = 0;
         for (int i = 0; i < size; i++) {
             Event event = eventList.get(i);
-            if (ImportEvent.equals(event.getCategories())){
+            if (event.getCategories() == 1){
                 importEventCount++;
             }
         }

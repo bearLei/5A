@@ -46,7 +46,7 @@
             android:id="@+id/edit_account"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_50"
-            android:hint="admin"
+            android:hint="账号"
             android:drawableLeft="@drawable/puti_login_account_unselected"
             android:drawablePadding="@dimen/dp_5"
             android:paddingLeft="@dimen/dp_10"

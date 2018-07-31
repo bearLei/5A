@@ -57,6 +57,7 @@
             android:gravity="center"
             android:background="@drawable/puti_shape_choose_stock"
             android:layout_marginLeft="@dimen/dp_20"
+            android:visibility="gone"
             >
             <ImageView
                 android:scaleType="center"

@@ -7,16 +7,16 @@ import java.util.List;
  */
 
 public class StudentEntity {
-    private Student Key;
+    private List<Student> Students;
 
     public StudentEntity() {
     }
 
-    public Student getKey() {
-        return Key;
+    public List<Student> getStudents() {
+        return Students;
     }
 
-    public void setKey(Student key) {
-        Key = key;
+    public void setStudents(List<Student> students) {
+        Students = students;
     }
 }

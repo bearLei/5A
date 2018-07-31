@@ -57,7 +57,7 @@ public class EventSureHolder extends BaseHolder<Event> {
         }
 
         time.setText(data.getTime());
-        if (data.isTypical()){
+        if (data.getCategories() == 1){
             type.setTextColor(mContext.getResources().getColor(R.color.base_f03c28));
             type.setTypeface(Typeface.DEFAULT_BOLD);
         }else {

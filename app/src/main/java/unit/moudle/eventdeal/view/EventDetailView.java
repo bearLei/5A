@@ -19,4 +19,5 @@ public interface EventDetailView extends BaseMvpView{
     String getEventId();
     String getEventDealOneUid();
     void setEventDealOneUid(String uid);
+    ArrayList<Event2Involved> getEventData();
 }

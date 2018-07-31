@@ -172,7 +172,10 @@ public class EventDetailActivity extends PutiActivity implements EventDetailView
         this.mEventDealOneUid = uid;
     }
 
-
+    @Override
+    public ArrayList<Event2Involved> getEventData() {
+        return mData;
+    }
 
 
     @Override

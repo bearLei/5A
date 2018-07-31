@@ -84,7 +84,7 @@ public class EventDetailChooseStuAdapter extends BaseAdapter {
             holder.addLayout.setVisibility(View.GONE);
             holder.name.setVisibility(View.VISIBLE);
             holder.avatar.setImageURI(student.getPhoto());
-            holder.name.setText(student.getRealName());
+            holder.name.setText(student.getStudentName());
         }
 
         holder.addLayout.setOnClickListener(new View.OnClickListener() {

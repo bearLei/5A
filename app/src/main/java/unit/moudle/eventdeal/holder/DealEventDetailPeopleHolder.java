@@ -20,6 +20,8 @@ import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import unit.api.PutiTeacherModel;
@@ -54,7 +56,7 @@ public class DealEventDetailPeopleHolder extends BaseHolder<Event2Involved> impl
     private DealEventDetailNotifyHolder mDealEventDetailNotifyHolder;
     private DealEventDetailPunishHolder mDealEventDetailPunishHolder;
 
-    private String mEventUid;
+    private ArrayList<Event2Involved> mList;
 
     private boolean isBatch;//是否是批量
 
@@ -73,7 +75,7 @@ public class DealEventDetailPeopleHolder extends BaseHolder<Event2Involved> impl
         mRootView = InflateService.g().inflate(R.layout.puti_deal_event_detail_people_holder);
         ButterKnife.bind(this, mRootView);
         if (mContext instanceof EventDetailActivity) {
-            mEventUid = ((EventDetailActivity) mContext).getEventDealOneUid();
+            mList= ((EventDetailActivity) mContext).getEventData();
         }
         return mRootView;
     }
@@ -131,13 +133,17 @@ public class DealEventDetailPeopleHolder extends BaseHolder<Event2Involved> impl
                     mDealEventDetailDeductHolder.getScore());
             dealResult(dealJson, getData().getEvent2InvolvedUID());
         } else {
-            dealJson = buildDealsJson(false,
-                    mDealEventDetailPunishHolder.getPunish(),
-                    mDealEventDetailNotifyHolder.needValid(),
-                    mDealEventDetailNotifyHolder.needParentNotice(),
-                    mDealEventDetailNotifyHolder.needPsy(),
-                    mDealEventDetailDeductHolder.getScore());
-            dealsResult(dealJson);
+            if (mList.size() > 0) {
+                for (int i = 0; i < mList.size(); i++) {
+                    dealJson = buildDealJson(false,
+                            mDealEventDetailPunishHolder.getPunish(),
+                            mDealEventDetailNotifyHolder.needValid(),
+                            mDealEventDetailNotifyHolder.needParentNotice(),
+                            mDealEventDetailNotifyHolder.needPsy(),
+                            mDealEventDetailDeductHolder.getScore());
+                    dealsResult(dealJson, mList.get(i).getEvent2InvolvedUID());
+                }
+            }
         }
     }
 
@@ -153,13 +159,13 @@ public class DealEventDetailPeopleHolder extends BaseHolder<Event2Involved> impl
                     mDealEventDetailDeductHolder.getScore());
             dealResult(dealJson, getData().getEvent2InvolvedUID());
         } else {
-            dealJson = buildDealsJson(true,
+            dealJson = buildDealJson(true,
                     mDealEventDetailPunishHolder.getPunish(),
                     mDealEventDetailNotifyHolder.needValid(),
                     mDealEventDetailNotifyHolder.needParentNotice(),
                     mDealEventDetailNotifyHolder.needPsy(),
                     mDealEventDetailDeductHolder.getScore());
-            dealsResult(dealJson);
+            dealsResult(dealJson,getData().getEvent2InvolvedUID());
         }
     }
 
@@ -199,24 +205,24 @@ public class DealEventDetailPeopleHolder extends BaseHolder<Event2Involved> impl
     }
 
     //批量处理事件
-    private String buildDealsJson(boolean confirm, String punishment,
-                                  boolean needValid, boolean needParentNotice,
-                                  boolean needPsy, int score) {
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("EventUID", mEventUid);
-            jsonObject.put("Confirm", confirm);
-            jsonObject.put("Reason", "");
-            jsonObject.put("Punishment", punishment);
-            jsonObject.put("NeedValid", needValid);
-            jsonObject.put("NeedParentNotice", needParentNotice);
-            jsonObject.put("NeedPsycholog", needPsy);
-            jsonObject.put("Score", score);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return jsonObject.toString();
-    }
+//    private String buildDealsJson(boolean confirm, String punishment,
+//                                  boolean needValid, boolean needParentNotice,
+//                                  boolean needPsy, int score) {
+//        JSONObject jsonObject = new JSONObject();
+//        try {
+//            jsonObject.put("EventUID", mEventUid);
+//            jsonObject.put("Confirm", confirm);
+//            jsonObject.put("Reason", "");
+//            jsonObject.put("Punishment", punishment);
+//            jsonObject.put("NeedValid", needValid);
+//            jsonObject.put("NeedParentNotice", needParentNotice);
+//            jsonObject.put("NeedPsycholog", needPsy);
+//            jsonObject.put("Score", score);
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//        return jsonObject.toString();
+//    }
 
 
     private void dealResult(String dealJson, final String eventId) {
@@ -244,16 +250,22 @@ public class DealEventDetailPeopleHolder extends BaseHolder<Event2Involved> impl
         });
     }
 
-    private void dealsResult(String dealJson) {
+    private void dealsResult(String dealJson,final String eventId) {
         if (mContext instanceof Activity) {
             ((Activity) mContext).finish();
         }
-        PutiTeacherModel.getInstance().dealsEvent(dealJson, new BaseListener(BaseResponseInfo.class) {
+        PutiTeacherModel.getInstance().dealEvent(dealJson, new BaseListener(BaseResponseInfo.class) {
             @Override
             public void responseResult(Object infoObj, Object listObj, int code, boolean status) {
                 ToastUtil.show("批量处理成功");
-                if (mContext instanceof Activity) {
-                    ((Activity) mContext).finish();
+                if (EventDealManager.needDealEventId.contains(eventId)){
+                    EventDealManager.needDealEventId.remove(eventId);
+                }
+                dissMissView();
+                if (EventDealManager.needDealEventId.size() == 0){
+                    if (mContext instanceof Activity){
+                        ((Activity) mContext).finish();
+                    }
                 }
             }
 

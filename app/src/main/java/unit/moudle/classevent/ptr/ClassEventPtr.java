@@ -1,6 +1,7 @@
 package unit.moudle.classevent.ptr;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.view.View;
 
 import com.puti.education.base.BaseMvpPtr;
@@ -18,6 +19,7 @@ import java.util.Set;
 import unit.api.PutiCommonModel;
 import unit.entity.Event;
 import unit.entity.PutiEvents;
+import unit.moudle.classevent.StatusChangeImpl;
 import unit.moudle.classevent.view.ClassEventView;
 import unit.util.TeaQueryManager;
 
@@ -39,6 +41,8 @@ public class ClassEventPtr implements BaseMvpPtr{
         this.mContext = mContext;
         this.mView = mView;
     }
+
+
 
     @Override
     public void star() {
@@ -127,4 +131,11 @@ public class ClassEventPtr implements BaseMvpPtr{
 
     }
 
+    public int getmCurrentStatus() {
+        return mCurrentStatus;
+    }
+
+    public void setmCurrentStatus(int mCurrentStatus) {
+        this.mCurrentStatus = mCurrentStatus;
+    }
 }

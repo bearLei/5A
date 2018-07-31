@@ -94,8 +94,8 @@ public class PutiClassEventActivity extends PutiActivity implements ClassEventVi
         if (mData == null) {
             mData = new ArrayList<>();
         }
-        if (mAdapter == null) {
-            mAdapter = new ClassEventAdapter(this, mData);
+        if (mAdapter == null){
+            mAdapter = new ClassEventAdapter(this,mData);
         }
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerview.setLayoutManager(manager);
@@ -143,6 +143,11 @@ public class PutiClassEventActivity extends PutiActivity implements ClassEventVi
         mData.clear();
         mData.addAll(data);
         mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public int getCurrentStatus() {
+        return mPtr.getmCurrentStatus();
     }
 
     @Override

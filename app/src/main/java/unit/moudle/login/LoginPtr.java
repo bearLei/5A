@@ -114,9 +114,13 @@ public class LoginPtr implements BaseMvpPtr {
     //登录成功后的操作
     private void handleResult(UserInfo userInfo){
         //sp存储
-        saveUserInfo(userInfo);
-        //获取uid
-        getUid();
+        if (userInfo.getCurrentPersonType() == 2 || userInfo.getCurrentPersonType() == 3) {
+            saveUserInfo(userInfo);
+            //获取uid
+            getUid();
+        }else {
+            ToastUtil.show("APP目前仅开放给班主任/任课教师使用，谢谢！");
+        }
     }
 
     private void saveUserInfo(UserInfo userInfo){

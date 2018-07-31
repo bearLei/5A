@@ -121,7 +121,7 @@ public class DealEventDetailHeadHolder extends BaseHolder<DealEventMain> {
         }
 
         if (voiceData.size() > 0) {
-            evidenceVioceLayout.setVisibility(View.VISIBLE);
+            evidenceVioceLayout.setVisibility(View.GONE);
             mVioceAdapter = new EvidenceVioceAdapter(mContext, voiceData);
             mVioceAdapter.setChooseVioceCallBack(new EvidenceVioceAdapter.ChooseVioceCallBack() {
                 @Override

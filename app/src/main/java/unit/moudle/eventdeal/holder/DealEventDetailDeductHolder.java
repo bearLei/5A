@@ -162,7 +162,11 @@ public class DealEventDetailDeductHolder extends BaseHolder<Event2Involved> {
         if (!TextUtils.isEmpty(editScore.getText().toString())){
             int score = Integer.parseInt(editScore.getText().toString());
             if (defaultDownScore<= score && score <= defaultUpScore){
-                return score;
+                if (getData().getSign() > 0) {
+                    return score;
+                }else {
+                    return score - 2*score;
+                }
             }
         }else {
             Iterator<Map.Entry<TextView, Boolean>> iterator = mViewSelectedMap.entrySet().iterator();
@@ -171,10 +175,12 @@ public class DealEventDetailDeductHolder extends BaseHolder<Event2Involved> {
                 Boolean value = entry.getValue();
                 View view = entry.getKey();
                 if (value == true && view instanceof TextView){
-                   return Integer.parseInt(((TextView) view).getText().toString());
-                }else {
-                    ToastUtil.show("请选择扣分选项");
-                    return 0;
+                    int score = Integer.parseInt(((TextView) view).getText().toString());
+                    if (getData().getSign() > 0){
+                        return score;
+                    }else {
+                        return score - 2*score;
+                    }
                 }
             }
         }

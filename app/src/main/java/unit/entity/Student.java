@@ -21,7 +21,7 @@ public class Student implements Serializable{
     private String IdCard;
     private String Mobile;
     private String Photo;
-    private String RealName;
+    private String StudentName;
     private String Sex;
     private String Address;
     private String UserUID;
@@ -157,12 +157,12 @@ public class Student implements Serializable{
         Photo = photo;
     }
 
-    public String getRealName() {
-        return RealName;
+    public String getStudentName() {
+        return StudentName;
     }
 
-    public void setRealName(String realName) {
-        RealName = realName;
+    public void setStudentName(String studentName) {
+        StudentName = studentName;
     }
 
     public String getSex() {

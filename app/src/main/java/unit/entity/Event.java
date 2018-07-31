@@ -11,7 +11,6 @@ public class Event implements Serializable {
     private String Time;
     private String TimeSpan;
     private String Description;
-    private String Categories;
     private String EventTypeName;
     private String IndexType;
     private String StudentNames;
@@ -19,6 +18,8 @@ public class Event implements Serializable {
     private String Scores;
     private String StatusArr;
     private boolean IsTypical;
+    private int Categories;
+    private String CategoriesName;
     public Event() {
     }
 
@@ -62,12 +63,20 @@ public class Event implements Serializable {
         Description = description;
     }
 
-    public String getCategories() {
+    public int getCategories() {
         return Categories;
     }
 
-    public void setCategories(String categories) {
+    public void setCategories(int categories) {
         Categories = categories;
+    }
+
+    public String getCategoriesName() {
+        return CategoriesName;
+    }
+
+    public void setCategoriesName(String categoriesName) {
+        CategoriesName = categoriesName;
     }
 
     public String getEventTypeName() {

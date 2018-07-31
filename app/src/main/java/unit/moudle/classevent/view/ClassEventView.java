@@ -15,4 +15,5 @@ public interface ClassEventView extends BaseMvpView {
     void setStatus(String status);
     void setClassName(String className);
     void succuess(ArrayList<Event> data);
+    int getCurrentStatus();
 }
