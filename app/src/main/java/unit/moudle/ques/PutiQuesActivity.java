@@ -116,7 +116,25 @@ public class PutiQuesActivity extends PutiActivity {
             showEmptyView();
         }
         mData.clear();
-        mData.addAll(data);
+        ArrayList<QuesInfo> unCompleteList = new ArrayList<>();
+        ArrayList<QuesInfo> timeOutList = new ArrayList<>();
+        ArrayList<QuesInfo> completeList = new ArrayList<>();
+        for (int i = 0; i < data.size(); i++) {
+            QuesInfo quesInfo = data.get(i);
+            if (quesInfo.getStatus() == 0){
+                unCompleteList.add(quesInfo);
+            }else if (quesInfo.getStatus() == 1){
+                timeOutList.add(quesInfo);
+            }else if (quesInfo.getStatus() == 2){
+                completeList.add(quesInfo);
+            }else {
+                unCompleteList.add(quesInfo);
+            }
+        }
+
+        mData.addAll(unCompleteList);
+        mData.addAll(timeOutList);
+        mData.addAll(completeList);
         mAdapter.notifyDataSetChanged();
     }
 

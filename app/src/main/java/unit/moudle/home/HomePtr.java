@@ -7,12 +7,24 @@ import android.widget.LinearLayout;
 
 import com.puti.education.base.BaseMvpPtr;
 import com.puti.education.base.holder.BaseHolder;
+import com.puti.education.listener.BaseListener;
+import com.puti.education.netFrame.response.PageInfo;
+import com.puti.education.util.ToastUtil;
 import com.puti.education.util.ViewUtils;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import unit.api.PutiCommonModel;
+import unit.api.PutiTeacherModel;
+import unit.entity.ClaRecordEntity;
+import unit.entity.Event;
 import unit.entity.PushInfo;
+import unit.entity.PutiEvents;
+import unit.entity.QuesInfo;
 import unit.eventbus.AvatarChangeEvent;
 import unit.eventbus.PutiEventBus;
 import unit.eventbus.PutiMsgNotice;
@@ -23,6 +35,7 @@ import unit.moudle.home.holder.HomeHeadHolder;
 import unit.moudle.home.holder.HomePowerHolder;
 import unit.moudle.home.holder.HomeToolHolder;
 import unit.sp.DataStorage;
+import unit.util.UserInfoUtils;
 
 /**
  * Created by lei on 2018/6/5.
@@ -64,6 +77,11 @@ public class HomePtr implements BaseMvpPtr {
     public void stop() {
 
     }
+    public void onResume(){
+        queryTeaClassRecord();
+        queryQues();
+    }
+
     //初始化头部个人信息Holder
     private void initHeadHolder(){
         if (mHeadHolder == null){
@@ -148,6 +166,64 @@ public class HomePtr implements BaseMvpPtr {
                 DataStorage.putUserHasReport(true);
                 break;
         }
+    }
+
+    //仅仅是做红点展示
+        private void queryTeaClassRecord(){
+            PutiTeacherModel.getInstance().queryTeacherRecords(UserInfoUtils.getUid(),new BaseListener(ClaRecordEntity.class){
+                @Override
+                public void responseResult(Object infoObj, Object listObj, int code, boolean status) {
+                    ClaRecordEntity entity = (ClaRecordEntity) infoObj;
+                    List<ClaRecordEntity.ClaHeadRecord> claHeadRecords = entity.getClaHeadRecords();
+                    if (claHeadRecords.size() > 0){
+                        queryEvent(claHeadRecords.get(0).getClassUID());
+                    }
+                }
+
+                @Override
+                public void requestFailed(boolean status, int code, String errorMessage) {
+                    mView.hideLoading();
+                    mView.showErrorView();
+                }
+            });
+        }
+        public void queryEvent(String classUid){
+            PutiCommonModel.getInstance().queryEvent(classUid,1,1, Integer.MAX_VALUE,new BaseListener(PutiEvents.class){
+                @Override
+                public void responseResult(Object infoObj, Object listObj, int code, boolean status) {
+                    PutiEvents events = (PutiEvents) infoObj;
+                    ArrayList<Event> eventList = (ArrayList<Event>) events.getEvents();
+                    if (eventList.size() > 0){
+                        mPowerHolder.setEventSurewHolderRedDog(true);
+                    }
+                }
+
+                @Override
+                public void requestFailed(boolean status, int code, String errorMessage) {
+                    mView.hideLoading();
+                    mView.showErrorView();
+                    mPowerHolder.setEventSurewHolderRedDog(false);
+                }
+            });
+        }
+
+
+    private void queryQues() {
+        PutiTeacherModel.getInstance().getQuesList(new BaseListener(QuesInfo.class) {
+            @Override
+            public void responseListResult(Object infoObj, Object listObj, PageInfo pageInfo, int code, boolean status) {
+                ArrayList<QuesInfo> list = (ArrayList<QuesInfo>) listObj;
+                for (int i = 0; i < list.size(); i++) {
+                    if (list.get(i).getStatus() == 0){
+                        mPowerHolder.setmQuesHolderRedDog(true);
+                    }
+                }
+            }
+
+            @Override
+            public void requestFailed(boolean status, int code, String errorMessage) {
+            }
+        });
     }
 
 }

@@ -56,6 +56,12 @@ public class HomeFragment extends PutiFragment implements HomeView {
         mPtr.stop();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mPtr.onResume();
+    }
+
     private void bindPtr(){
         if (mPtr == null){
             mPtr = new HomePtr(getActivity(),this);

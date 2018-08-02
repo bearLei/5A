@@ -1,9 +1,7 @@
 package unit.moudle.eventregist.ptr;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.TextView;
 
 import com.puti.education.base.BaseMvpPtr;
 import com.puti.education.listener.BaseListener;
@@ -93,15 +91,13 @@ public class ChooseStuPtr implements BaseMvpPtr {
             @Override
             public void responseResult(Object infoObj, Object listObj, int code, boolean status) {
                 super.responseResult(infoObj, listObj, code, status);
-                StudentEntity studentEntity = (StudentEntity) infoObj;
-                handleResult(studentEntity.getStudents());
             }
 
             @Override
             public void responseListResult(Object infoObj, Object listObj, PageInfo pageInfo, int code, boolean status) {
                 super.responseListResult(infoObj, listObj, pageInfo, code, status);
-//                ArrayList<StudentEntity> students = (ArrayList<StudentEntity>) listObj;
-//                handleResult(students);
+                ArrayList<StudentEntity> students = (ArrayList<StudentEntity>) listObj;
+                handleResult(students);
             }
 
             @Override
@@ -114,21 +110,17 @@ public class ChooseStuPtr implements BaseMvpPtr {
         });
     }
 
-    public void handleResult(List<Student> students) {
+    public void handleResult(List<StudentEntity> students) {
         final int size = students.size();
         studentMap.clear();
         mStudentList.clear();
         for (int i = 0; i < size; i++) {
-            Student student = students.get(i);
-            if (!TextUtils.isEmpty(student.getStudentName())) {
-                String s = getSelling(student.getStudentName());
-                if (studentMap.containsKey(s)) {
-                    studentMap.get(s).add(student);
-                } else {
-                    ArrayList<Student> list = new ArrayList<Student>();
-                    list.add(student);
-                    studentMap.put(s, list);
-                }
+            ArrayList<Student> users = (ArrayList<Student>) students.get(i).getUsers();
+            String s = students.get(i).getWord();
+            if (studentMap.containsKey(s)) {
+
+            } else {
+                studentMap.put(s, users);
             }
         }
         Iterator<Map.Entry<String, ArrayList<Student>>> iterator = studentMap.entrySet().iterator();

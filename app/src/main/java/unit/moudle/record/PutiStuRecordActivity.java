@@ -1,5 +1,6 @@
 package unit.moudle.record;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -7,6 +8,7 @@ import com.puti.education.R;
 import com.puti.education.base.PutiActivity;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import unit.entity.Student;
 import unit.moudle.record.ptr.PutiStuPtr;
 import unit.moudle.record.view.PutiStuView;
@@ -26,9 +28,18 @@ public class PutiStuRecordActivity extends PutiActivity implements PutiStuView {
     LinearLayout VStuLikeNessLayout;
     @BindView(R.id.stu_info)
     LinearLayout VStuInfoLayout;
+    @BindView(R.id.stu_character)
+    LinearLayout VStuCharacter;
+    @BindView(R.id.stu_academic)
+    LinearLayout VStuAcademic;
+    @BindView(R.id.stu_mentalHealth)
+    LinearLayout VStuMentalHealth;
+    @BindView(R.id.stu_activity)
+    LinearLayout VStuActivity;
 
     private Student student;
     private PutiStuPtr mPtr;
+
     @Override
     public int getContentView() {
         return R.layout.puti_stu_record_activity;
@@ -36,8 +47,8 @@ public class PutiStuRecordActivity extends PutiActivity implements PutiStuView {
 
     @Override
     public void BindPtr() {
-        if (mPtr == null){
-            mPtr = new PutiStuPtr(this,this);
+        if (mPtr == null) {
+            mPtr = new PutiStuPtr(this, this);
         }
     }
 
@@ -86,8 +97,32 @@ public class PutiStuRecordActivity extends PutiActivity implements PutiStuView {
     }
 
     @Override
+    public void addCharacTerView(View view) {
+        VStuCharacter.removeAllViews();
+        VStuCharacter.addView(view);
+    }
+
+    @Override
+    public void addAcademicLevelView(View view) {
+        VStuAcademic.removeAllViews();
+        VStuAcademic.addView(view);
+    }
+
+    @Override
+    public void addMeatalHealthView(View view) {
+        VStuMentalHealth.removeAllViews();
+        VStuMentalHealth.addView(view);
+    }
+
+    @Override
+    public void addActivityView(View view) {
+        VStuActivity.removeAllViews();
+        VStuActivity.addView(view);
+    }
+
+    @Override
     public String getStudentUid() {
-        if (student != null){
+        if (student != null) {
             return student.getStudentUID();
         }
         return "";
@@ -95,7 +130,7 @@ public class PutiStuRecordActivity extends PutiActivity implements PutiStuView {
 
     @Override
     public void setHeadTitle(String name) {
-        if (headview != null){
+        if (headview != null) {
             headview.setTitle(name);
         }
     }
@@ -119,4 +154,5 @@ public class PutiStuRecordActivity extends PutiActivity implements PutiStuView {
     public void showEmptyView() {
 
     }
+
 }

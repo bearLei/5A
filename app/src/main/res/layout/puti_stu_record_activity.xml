@@ -21,9 +21,32 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             ></LinearLayout>
-
         <LinearLayout
             android:id="@+id/stu_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            ></LinearLayout>
+        <LinearLayout
+            android:id="@+id/stu_character"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            ></LinearLayout>
+        <LinearLayout
+            android:id="@+id/stu_academic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            ></LinearLayout>
+        <LinearLayout
+            android:id="@+id/stu_mentalHealth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            ></LinearLayout>
+        <LinearLayout
+            android:id="@+id/stu_activity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"

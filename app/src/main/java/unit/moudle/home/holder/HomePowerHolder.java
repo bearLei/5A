@@ -180,4 +180,8 @@ public class HomePowerHolder extends BaseHolder<Object>{
         mReportHolder.showRedDog(show);
     }
 
+    public void setEventSurewHolderRedDog(boolean show){
+        mEventSureHolder.showRedDog(show);
+    }
+
 }

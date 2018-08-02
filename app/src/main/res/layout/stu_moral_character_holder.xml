@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:background="@color/base_39BCA1"
+        >
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="思想品德"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/base_666666"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_centerVertical="true"
+            />
+        <ImageView
+            android:id="@+id/pull_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/puti_down_big"
+            android:scaleType="center"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_15"
+            />
+    </RelativeLayout>
+    <com.puti.education.widget.ListViewForScrollView
+        android:id="@+id/character_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.puti.education.widget.ListViewForScrollView>
+
+</LinearLayout>

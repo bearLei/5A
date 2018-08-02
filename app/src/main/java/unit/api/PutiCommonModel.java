@@ -297,7 +297,74 @@ public class PutiCommonModel extends PutiBaseModel{
                     }
                 });
     }
-
+    /**
+     *查询学生实践活动信息
+     * @param studentUid
+     * @param termUID termUID
+     * @param listener
+     */
+    public void queryActivity(String studentUid,String termUID,final BaseListener listener){
+        mCommonApi.queryStuActivity(studentUid,termUID)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new PutiCommonSubscriber(listener){
+                    @Override
+                    public void onNext(BaseResponseInfo responseInfo) {
+                        dealJson(responseInfo,listener);
+                    }
+                });
+    }
+    /**
+     *查询学生思想品德信息
+     * @param studentUid
+     * @param termUID termUID
+     * @param listener
+     */
+    public void queryCharacter(String studentUid,String termUID,final BaseListener listener){
+        mCommonApi.queryStuCharacter(studentUid,termUID)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new PutiCommonSubscriber(listener){
+                    @Override
+                    public void onNext(BaseResponseInfo responseInfo) {
+                        dealJson(responseInfo,listener);
+                    }
+                });
+    }
+    /**
+     *查询学生学业水平信息
+     * @param studentUid
+     * @param termUID termUID
+     * @param listener
+     */
+    public void queryAcademicLevel(String studentUid,String termUID,final BaseListener listener){
+        mCommonApi.queryStuAcademicLevel(studentUid,termUID)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new PutiCommonSubscriber(listener){
+                    @Override
+                    public void onNext(BaseResponseInfo responseInfo) {
+                        dealJson(responseInfo,listener);
+                    }
+                });
+    }
+    /**
+     *查询学生身心健康信息
+     * @param studentUid
+     * @param termUID termUID
+     * @param listener
+     */
+    public void queryMentalHealth(String studentUid,String termUID,final BaseListener listener){
+        mCommonApi.queryStuMentalHealth(studentUid,termUID)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new PutiCommonSubscriber(listener){
+                    @Override
+                    public void onNext(BaseResponseInfo responseInfo) {
+                        dealJson(responseInfo,listener);
+                    }
+                });
+    }
     /**
      * 查询教师基础信息
      * @param teacherUID 教师id

@@ -227,7 +227,7 @@ public class AddEventDetailPtr implements BaseMvpPtr {
                 try {
                     ZxingUserInfo info = JSON.parseObject(result, ZxingUserInfo.class);
                     Student student = new Student();
-                    student.setStudentName(info.Name);
+                    student.setUserName(info.Name);
                     student.setStudentUID(info.UID);
                     if (mChooseStuList == null){
                         mChooseStuList = new ArrayList<Student>();

@@ -20,8 +20,6 @@ import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import unit.api.PutiTeacherModel;
@@ -56,7 +54,7 @@ public class DealEventDetailPeopleHolder extends BaseHolder<Event2Involved> impl
     private DealEventDetailNotifyHolder mDealEventDetailNotifyHolder;
     private DealEventDetailPunishHolder mDealEventDetailPunishHolder;
 
-    private ArrayList<Event2Involved> mList;
+    private String mEventUid;
 
     private boolean isBatch;//是否是批量
 
@@ -75,7 +73,7 @@ public class DealEventDetailPeopleHolder extends BaseHolder<Event2Involved> impl
         mRootView = InflateService.g().inflate(R.layout.puti_deal_event_detail_people_holder);
         ButterKnife.bind(this, mRootView);
         if (mContext instanceof EventDetailActivity) {
-            mList= ((EventDetailActivity) mContext).getEventData();
+            mEventUid = ((EventDetailActivity) mContext).getEventDealOneUid();
         }
         return mRootView;
     }
@@ -104,10 +102,14 @@ public class DealEventDetailPeopleHolder extends BaseHolder<Event2Involved> impl
         deductLayout.removeAllViews();
         notifyLayout.removeAllViews();
         punishLayout.removeAllViews();
-        if (mData.getStatus() == 0) {
+        if (mData.getSign() == 0) {
             actionLayout.addView(oprateView(mDealEventDetailActionHolder.getRootView()));
             notifyLayout.addView(oprateView(mDealEventDetailNotifyHolder.getRootView()));
-        } else {
+        } else if (data.getSign() > 0){
+            actionLayout.addView(oprateView(mDealEventDetailActionHolder.getRootView()));
+            deductLayout.addView(oprateView(mDealEventDetailDeductHolder.getRootView()));
+            notifyLayout.addView(oprateView(mDealEventDetailNotifyHolder.getRootView()));
+        }else {
             actionLayout.addView(oprateView(mDealEventDetailActionHolder.getRootView()));
             deductLayout.addView(oprateView(mDealEventDetailDeductHolder.getRootView()));
             notifyLayout.addView(oprateView(mDealEventDetailNotifyHolder.getRootView()));
@@ -133,17 +135,13 @@ public class DealEventDetailPeopleHolder extends BaseHolder<Event2Involved> impl
                     mDealEventDetailDeductHolder.getScore());
             dealResult(dealJson, getData().getEvent2InvolvedUID());
         } else {
-            if (mList.size() > 0) {
-                for (int i = 0; i < mList.size(); i++) {
-                    dealJson = buildDealJson(false,
-                            mDealEventDetailPunishHolder.getPunish(),
-                            mDealEventDetailNotifyHolder.needValid(),
-                            mDealEventDetailNotifyHolder.needParentNotice(),
-                            mDealEventDetailNotifyHolder.needPsy(),
-                            mDealEventDetailDeductHolder.getScore());
-                    dealsResult(dealJson, mList.get(i).getEvent2InvolvedUID());
-                }
-            }
+            dealJson = buildDealsJson(false,
+                    mDealEventDetailPunishHolder.getPunish(),
+                    mDealEventDetailNotifyHolder.needValid(),
+                    mDealEventDetailNotifyHolder.needParentNotice(),
+                    mDealEventDetailNotifyHolder.needPsy(),
+                    mDealEventDetailDeductHolder.getScore());
+            dealsResult(dealJson);
         }
     }
 
@@ -159,13 +157,13 @@ public class DealEventDetailPeopleHolder extends BaseHolder<Event2Involved> impl
                     mDealEventDetailDeductHolder.getScore());
             dealResult(dealJson, getData().getEvent2InvolvedUID());
         } else {
-            dealJson = buildDealJson(true,
+            dealJson = buildDealsJson(true,
                     mDealEventDetailPunishHolder.getPunish(),
                     mDealEventDetailNotifyHolder.needValid(),
                     mDealEventDetailNotifyHolder.needParentNotice(),
                     mDealEventDetailNotifyHolder.needPsy(),
                     mDealEventDetailDeductHolder.getScore());
-            dealsResult(dealJson,getData().getEvent2InvolvedUID());
+            dealsResult(dealJson);
         }
     }
 
@@ -205,24 +203,24 @@ public class DealEventDetailPeopleHolder extends BaseHolder<Event2Involved> impl
     }
 
     //批量处理事件
-//    private String buildDealsJson(boolean confirm, String punishment,
-//                                  boolean needValid, boolean needParentNotice,
-//                                  boolean needPsy, int score) {
-//        JSONObject jsonObject = new JSONObject();
-//        try {
-//            jsonObject.put("EventUID", mEventUid);
-//            jsonObject.put("Confirm", confirm);
-//            jsonObject.put("Reason", "");
-//            jsonObject.put("Punishment", punishment);
-//            jsonObject.put("NeedValid", needValid);
-//            jsonObject.put("NeedParentNotice", needParentNotice);
-//            jsonObject.put("NeedPsycholog", needPsy);
-//            jsonObject.put("Score", score);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        return jsonObject.toString();
-//    }
+    private String buildDealsJson(boolean confirm, String punishment,
+                                  boolean needValid, boolean needParentNotice,
+                                  boolean needPsy, int score) {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("EventUID", mEventUid);
+            jsonObject.put("Confirm", confirm);
+            jsonObject.put("Reason", "");
+            jsonObject.put("Punishment", punishment);
+            jsonObject.put("NeedValid", needValid);
+            jsonObject.put("NeedParentNotice", needParentNotice);
+            jsonObject.put("NeedPsycholog", needPsy);
+            jsonObject.put("Score", score);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject.toString();
+    }
 
 
     private void dealResult(String dealJson, final String eventId) {
@@ -250,22 +248,16 @@ public class DealEventDetailPeopleHolder extends BaseHolder<Event2Involved> impl
         });
     }
 
-    private void dealsResult(String dealJson,final String eventId) {
+    private void dealsResult(String dealJson) {
         if (mContext instanceof Activity) {
             ((Activity) mContext).finish();
         }
-        PutiTeacherModel.getInstance().dealEvent(dealJson, new BaseListener(BaseResponseInfo.class) {
+        PutiTeacherModel.getInstance().dealsEvent(dealJson, new BaseListener(BaseResponseInfo.class) {
             @Override
             public void responseResult(Object infoObj, Object listObj, int code, boolean status) {
                 ToastUtil.show("批量处理成功");
-                if (EventDealManager.needDealEventId.contains(eventId)){
-                    EventDealManager.needDealEventId.remove(eventId);
-                }
-                dissMissView();
-                if (EventDealManager.needDealEventId.size() == 0){
-                    if (mContext instanceof Activity){
-                        ((Activity) mContext).finish();
-                    }
+                if (mContext instanceof Activity) {
+                    ((Activity) mContext).finish();
                 }
             }
 

@@ -7,16 +7,24 @@ import java.util.List;
  */
 
 public class StudentEntity {
-    private List<Student> Students;
-
+    private List<Student> Users;
+    private String Word;
     public StudentEntity() {
     }
 
-    public List<Student> getStudents() {
-        return Students;
+    public List<Student> getUsers() {
+        return Users;
     }
 
-    public void setStudents(List<Student> students) {
-        Students = students;
+    public void setUsers(List<Student> users) {
+        Users = users;
+    }
+
+    public String getWord() {
+        return Word;
+    }
+
+    public void setWord(String word) {
+        Word = word;
     }
 }

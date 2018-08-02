@@ -13,8 +13,10 @@ import java.util.List;
 import unit.api.PutiCommonModel;
 import unit.entity.DealEventMain;
 import unit.entity.Event2Involved;
+import unit.entity.UserInfo;
 import unit.moudle.eventdeal.holder.DealEventDetailHeadHolder;
 import unit.moudle.eventdeal.view.EventDetailView;
+import unit.util.UserInfoUtils;
 
 /**
  * Created by lei on 2018/6/22.
@@ -75,6 +77,7 @@ public class EventDetailPtr implements BaseMvpPtr {
         mView.setEventDealOneUid(eventMain.getEventUID());
         List<Event2Involved> event2Involveds = eventMain.getEvent2Involveds();
         int size = event2Involveds.size();
+        List<Event2Involved> finalevent2Involveds = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             Event2Involved event2Involved = event2Involveds.get(i);
             event2Involved.setDefaultDownScore(eventMain.getDefaultDownScore());
@@ -83,8 +86,13 @@ public class EventDetailPtr implements BaseMvpPtr {
             event2Involved.setDefaultNeedParent(eventMain.isDefaultNeedParentNotice());
             event2Involved.setDefaultNeedVaied(eventMain.isDefaultNeedValid());
             event2Involved.setDefaultPsy(eventMain.isDefaultNeedPsycholog());
+            if (event2Involved.getHeadUID().equals(UserInfoUtils.getUid())){
+                finalevent2Involveds.add(event2Involved);
+            }
         }
-        mView.success((ArrayList<Event2Involved>) eventMain.getEvent2Involveds());
+        mView.setTitle(String.valueOf(finalevent2Involveds.size()));
+        mView.setEventDealOneUid(eventMain.getEventUID());
+        mView.success((ArrayList<Event2Involved>) finalevent2Involveds);
     }
 
 

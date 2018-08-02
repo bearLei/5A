@@ -280,6 +280,96 @@
                     app:record_title="身份证号"
                     />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dp_20"
+                android:gravity="left"
+                >
+                <unit.widget.PutiRecordItem
+                    android:id="@+id/stu_class"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:record_title="班级"
+                    />
+                <unit.widget.PutiRecordItem
+                    android:id="@+id/stu_major"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:record_title="专业"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dp_20"
+                android:gravity="left"
+                >
+                <unit.widget.PutiRecordItem
+                    android:id="@+id/stu_yuanxi"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:record_title="院系"
+                    />
+                <unit.widget.PutiRecordItem
+                    android:id="@+id/stu_id"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:record_title="学号"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dp_20"
+                android:gravity="left"
+                >
+                <unit.widget.PutiRecordItem
+                    android:id="@+id/stu_status"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:record_title="学籍状态"
+                    />
+                <unit.widget.PutiRecordItem
+                    android:id="@+id/stu_in_school"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:record_title="入校时间"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dp_20"
+                android:gravity="left"
+                >
+                <unit.widget.PutiRecordItem
+                    android:id="@+id/stu_dorm_status"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:record_title="校内住宿"
+                    />
+                <unit.widget.PutiRecordItem
+                    android:id="@+id/stu_dorm_number"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:record_title="宿舍"
+                    />
+            </LinearLayout>
     </LinearLayout>
     </LinearLayout>
 </ScrollView>

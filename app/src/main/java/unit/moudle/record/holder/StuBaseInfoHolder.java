@@ -59,6 +59,23 @@ public class StuBaseInfoHolder extends BaseHolder<StudentInfo> {
     @BindView(R.id.content_layout)
     LinearLayout contentLayout;
 
+    @BindView(R.id.stu_class)
+    PutiRecordItem stuClass;
+    @BindView(R.id.stu_major)
+    PutiRecordItem stuMajor;
+    @BindView(R.id.stu_yuanxi)
+    PutiRecordItem stuYuanxi;
+    @BindView(R.id.stu_id)
+    PutiRecordItem stuId;
+    @BindView(R.id.stu_status)
+    PutiRecordItem stuStatus;
+    @BindView(R.id.stu_in_school)
+    PutiRecordItem stuInSchool;
+    @BindView(R.id.stu_dorm_status)
+    PutiRecordItem stuDormStatus;
+    @BindView(R.id.stu_dorm_number)
+    PutiRecordItem stuDormNumber;
+
     private boolean hide;
 
     public StuBaseInfoHolder(Context context) {
@@ -95,12 +112,11 @@ public class StuBaseInfoHolder extends BaseHolder<StudentInfo> {
         //基础信息
         if (stuBasicInfo != null) {
             name.setTDesc(stuBasicInfo.getUserName());
-            if (stuBasicInfo.getSex().equals("F")){
+            if (stuBasicInfo.getSex().equals("F")) {
                 sex.setTDesc("男");
-            }else {
+            } else {
                 sex.setTDesc("女");
             }
-            sex.setTDesc(stuBasicInfo.getSex());
             // TODO: 2018/6/18 民族
             birth.setTDesc(stuBasicInfo.getBirthday());
             cencus.setTDesc(stuBasicInfo.getCensusRegister());
@@ -122,5 +138,17 @@ public class StuBaseInfoHolder extends BaseHolder<StudentInfo> {
             motherCard.setTDesc(stuMotherInfo.getIdCard());
         }
 
+        if (studentInfoms != null) {
+            stuClass.setTDesc(studentInfoms.getClassName());
+            stuMajor.setTDesc(studentInfoms.getProfessionalName());
+            stuYuanxi.setTDesc(studentInfoms.getDepartment());
+            //学号
+            stuStatus.setTDesc(studentInfoms.getStatus() == 0 ? "正常" : "异常");
+            stuInSchool.setTDesc(studentInfoms.getStatusTime());
+        }
+        if (stuDorminfo != null){
+            stuDormStatus.setTDesc(stuDorminfo.isStatus() ? "是" : "否" );
+            stuDormNumber.setTDesc(stuDorminfo.getRoom());
+        }
     }
 }

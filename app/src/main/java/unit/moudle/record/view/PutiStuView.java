@@ -14,6 +14,10 @@ public interface PutiStuView extends BaseMvpView{
 
     void addLikeNessView(View view);
     void addBaseInfoView(View view);
+    void addCharacTerView(View view);
+    void addAcademicLevelView(View view);
+    void addMeatalHealthView(View view);
+    void addActivityView(View view);
     String getStudentUid();
     void setHeadTitle(String name);
 }
