@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.puti.education.R;
@@ -31,6 +32,8 @@ public class StuHealthHolder extends BaseHolder<StuHealthInfo> {
     TextView title;
     @BindView(R.id.character_list)
     ListViewForScrollView healthList;
+    @BindView(R.id.title_layout)
+    RelativeLayout titleLayout;
 
     private boolean hide;
     private StuRecordHealthAdapter mAdapter;
@@ -45,7 +48,7 @@ public class StuHealthHolder extends BaseHolder<StuHealthInfo> {
         View view = InflateService.g().inflate(R.layout.stu_moral_character_holder);
         ButterKnife.bind(this, view);
         title.setText("身心健康");
-        pullDown.setOnClickListener(new View.OnClickListener() {
+        titleLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 hide = !hide;
@@ -57,7 +60,7 @@ public class StuHealthHolder extends BaseHolder<StuHealthInfo> {
 
     @Override
     protected void updateUI(Context context, StuHealthInfo data) {
-        if (data == null){
+        if (data == null) {
             return;
         }
         List<StuHealthMoraInfo> stuMoraInfo = data.getStuMoraInfo();
@@ -68,7 +71,7 @@ public class StuHealthHolder extends BaseHolder<StuHealthInfo> {
             stuHealthMors.addAll(stuMoraInfo.get(i).getStuMor());
         }
 
-        mAdapter = new StuRecordHealthAdapter(mContext,stuHealthMors);
+        mAdapter = new StuRecordHealthAdapter(mContext, stuHealthMors);
 
         healthList.setAdapter(mAdapter);
     }

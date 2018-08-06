@@ -31,6 +31,8 @@ public class StuAcademicLevelHolder extends BaseHolder<StuAcademicLevelInfo> {
     TextView title;
     @BindView(R.id.character_list)
     ListViewForScrollView academicList;
+    @BindView(R.id.title_layout)
+    RelativeLayout titleLayout;
 
     private boolean hide;
     private StuRecordAcademicLevelAdapter mAdapter;
@@ -45,7 +47,7 @@ public class StuAcademicLevelHolder extends BaseHolder<StuAcademicLevelInfo> {
         View view = InflateService.g().inflate(R.layout.stu_moral_character_holder);
         ButterKnife.bind(this, view);
         title.setText("学业水平");
-        pullDown.setOnClickListener(new View.OnClickListener() {
+        titleLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 hide = !hide;
@@ -57,7 +59,7 @@ public class StuAcademicLevelHolder extends BaseHolder<StuAcademicLevelInfo> {
 
     @Override
     protected void updateUI(Context context, StuAcademicLevelInfo data) {
-        if (data == null){
+        if (data == null) {
             return;
         }
 

@@ -160,10 +160,14 @@ public class HomePtr implements BaseMvpPtr {
             case Msg_Ques:
                 mPowerHolder.setmQuesHolderRedDog(true);
                 DataStorage.putUserQues(true);
+                mHeadHolder.setRedDog(true);
+                DataStorage.putUserHasNotice(true);
                 break;
             case Msg_Report:
                 mPowerHolder.setmReportHolderRedDog(true);
                 DataStorage.putUserHasReport(true);
+                mHeadHolder.setRedDog(true);
+                DataStorage.putUserHasNotice(true);
                 break;
         }
     }

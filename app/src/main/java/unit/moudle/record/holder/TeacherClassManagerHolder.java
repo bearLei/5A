@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.puti.education.R;
 import com.puti.education.base.InflateService;
@@ -26,6 +27,8 @@ public class TeacherClassManagerHolder extends BaseHolder<ArrayList<ClaRecordInf
     ListViewForScrollView listview;
     @BindView(R.id.pull_down)
     ImageView pullDown;
+    @BindView(R.id.title_layout)
+    RelativeLayout titleLayout;
 
     private boolean hide;
     private TeacherRecordAdapter mAdapter;
@@ -39,7 +42,7 @@ public class TeacherClassManagerHolder extends BaseHolder<ArrayList<ClaRecordInf
     protected View initView(Context context) {
         mRootView = InflateService.g().inflate(R.layout.puti_tea_class_manager_holder);
         ButterKnife.bind(this, mRootView);
-        pullDown.setOnClickListener(new View.OnClickListener() {
+        titleLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 hide = !hide;

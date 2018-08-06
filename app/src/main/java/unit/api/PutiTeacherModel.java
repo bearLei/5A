@@ -83,7 +83,7 @@ public class PutiTeacherModel extends PutiBaseModel{
      * @param listener
      */
     public void getStudent( String classUID,String termUID,int status,int pageIndex,int pageSize,String studentName,final BaseListener listener){
-        mTeacherApi.getStudent(classUID, termUID, status, pageIndex, pageSize,studentName)
+        mTeacherApi.getStudent(classUID, termUID, studentName)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new PutiCommonSubscriber(listener){

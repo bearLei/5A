@@ -23,10 +23,7 @@ public interface PutiTeacherApi {
     @GET("Common/Students")//获取学生列表
     Observable<BaseResponseInfo> getStudent(@Query("classUID") String classUID,
                                             @Query("termUID")String termUID,
-                                            @Query("status") int status,
-                                            @Query("pageIndex") int pageIndex,
-                                            @Query("pageSize")int pageSize,
-                                            @Query("studentName")String studentName);
+                                            @Query("name")String studentName);
     @GET("Common/MyUID")//获取自己的uid
     Observable<BaseResponseInfo> getUid();
 

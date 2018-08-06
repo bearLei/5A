@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.puti.education.R;
@@ -32,10 +33,13 @@ public class StuActivityHolder extends BaseHolder<StuActivityInfo> {
     ImageView pullDown;
     @BindView(R.id.character_list)
     ListViewForScrollView activityList;
+    @BindView(R.id.title_layout)
+    RelativeLayout titleLayout;
 
     private boolean hide;
 
     private StuRecordActivityAdapter mAdapter;
+
     public StuActivityHolder(Context context) {
         super(context);
     }
@@ -46,7 +50,7 @@ public class StuActivityHolder extends BaseHolder<StuActivityInfo> {
         View view = InflateService.g().inflate(R.layout.stu_moral_character_holder);
         ButterKnife.bind(this, view);
         title.setText("实际活动");
-        pullDown.setOnClickListener(new View.OnClickListener() {
+        titleLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 hide = !hide;
@@ -59,17 +63,17 @@ public class StuActivityHolder extends BaseHolder<StuActivityInfo> {
     @Override
     protected void updateUI(Context context, StuActivityInfo data) {
 
-        if (data == null){
+        if (data == null) {
             return;
         }
 
         List<StuMoraInfo> stuMoraInfo = data.getStuMoraInfo();
         ArrayList<StuMor> stuMors = new ArrayList<>();
         for (int i = 0; i < stuMoraInfo.size(); i++) {
-           stuMors.addAll(stuMoraInfo.get(i).getStuMor());
+            stuMors.addAll(stuMoraInfo.get(i).getStuMor());
         }
 
-        mAdapter = new StuRecordActivityAdapter(mContext,stuMors);
+        mAdapter = new StuRecordActivityAdapter(mContext, stuMors);
 
         activityList.setAdapter(mAdapter);
     }

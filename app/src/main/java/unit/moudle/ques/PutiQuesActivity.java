@@ -89,6 +89,12 @@ public class PutiQuesActivity extends PutiActivity {
 
     @Override
     public void Star() {
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         queryData();
     }
 

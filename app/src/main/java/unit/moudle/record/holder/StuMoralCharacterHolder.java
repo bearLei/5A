@@ -32,6 +32,8 @@ public class StuMoralCharacterHolder extends BaseHolder<StuCharacterInfo> {
     TextView title;
     @BindView(R.id.character_list)
     ListViewForScrollView characterList;
+    @BindView(R.id.title_layout)
+    RelativeLayout titleLayout;
 
     private boolean hide;
     private StuRecordCharacterAdapter mAdapter;
@@ -46,7 +48,7 @@ public class StuMoralCharacterHolder extends BaseHolder<StuCharacterInfo> {
         View view = InflateService.g().inflate(R.layout.stu_moral_character_holder);
         ButterKnife.bind(this, view);
         title.setText("思想品德");
-        pullDown.setOnClickListener(new View.OnClickListener() {
+        titleLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 hide = !hide;
@@ -67,7 +69,7 @@ public class StuMoralCharacterHolder extends BaseHolder<StuCharacterInfo> {
                 StuCharacterInfo.StuCharInfo stuCharInfo = data.getStuCharInfo().get(i);
                 stupArrayList.addAll(stuCharInfo.getStuP());
             }
-            mAdapter = new StuRecordCharacterAdapter(mContext,stupArrayList);
+            mAdapter = new StuRecordCharacterAdapter(mContext, stupArrayList);
         }
         characterList.setAdapter(mAdapter);
     }

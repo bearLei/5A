@@ -66,6 +66,13 @@ public class StuRecordAcademicLevelAdapter extends BaseAdapter {
         if (stuAcadInfo != null) {
             holder.eventType.setText(stuAcadInfo.getCourseName());
             holder.score.setText(String.valueOf(stuAcadInfo.getScore()));
+            if (stuAcadInfo.getScore() >= 60){
+                holder.eventType.setTextColor(context.getResources().getColor(R.color.base_666666));
+                holder.score.setTextColor(context.getResources().getColor(R.color.base_666666));
+            }else {
+                holder.eventType.setTextColor(context.getResources().getColor(R.color.base_ff0000));
+                holder.score.setTextColor(context.getResources().getColor(R.color.base_ff0000));
+            }
             holder.term.setText("");
         }
         return convertView;

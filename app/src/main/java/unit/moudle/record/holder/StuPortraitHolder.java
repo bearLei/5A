@@ -46,8 +46,13 @@ public class StuPortraitHolder extends BaseHolder<StudentPortraitInfo> {
     TextView gradeRankLayout;
     @BindView(R.id.expression_list)
     GridViewForScrollView expressionList;
+    @BindView(R.id.title_layout)
+    RelativeLayout titleLayout;
+    @BindView(R.id.container)
+    LinearLayout container;
 
     private StuRecordExpressionAdapter mAdapter;
+    private boolean hide;
     public StuPortraitHolder(Context context) {
         super(context);
     }
@@ -57,13 +62,20 @@ public class StuPortraitHolder extends BaseHolder<StudentPortraitInfo> {
     protected View initView(Context context) {
         mRootView = InflateService.g().inflate(R.layout.puti_record_stu_portrait);
         ButterKnife.bind(this, mRootView);
+        titleLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hide = !hide;
+                container.setVisibility(hide ? View.GONE : View.VISIBLE);
+            }
+        });
         return mRootView;
     }
 
     @Override
     protected void updateUI(Context context, StudentPortraitInfo data) {
 
-        if (data == null){
+        if (data == null) {
             return;
         }
 
@@ -72,22 +84,22 @@ public class StuPortraitHolder extends BaseHolder<StudentPortraitInfo> {
         List<StudentPortraitInfo.StudentPort> studentPort = data.getStudentPort();
 
 
-        if (studentInfoms != null){
+        if (studentInfoms != null) {
             avatar.setImageURI(studentInfoms.getPhtot());
             className.setText(studentInfoms.getClassName());
             majorName.setText(studentInfoms.getProfessionalName());
             time.setText(studentInfoms.getStatusTime());
         }
 
-        if (stuPortrar != null){
+        if (stuPortrar != null) {
             totalPoint.setText(String.valueOf(stuPortrar.getScore()));
             comparisonPoint.setText(String.valueOf(stuPortrar.getContrastiveScore()));
             classRankPoint.setText(String.valueOf(stuPortrar.getGraderanks()));
             gradeRankLayout.setText(String.valueOf(stuPortrar.getSchoolranks()));
         }
 
-        if (mAdapter == null){
-            mAdapter = new StuRecordExpressionAdapter(mContext,studentPort);
+        if (mAdapter == null) {
+            mAdapter = new StuRecordExpressionAdapter(mContext, studentPort);
         }
         expressionList.setAdapter(mAdapter);
     }

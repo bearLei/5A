@@ -61,15 +61,22 @@
         android:layout_weight="1"
         app:record_title="姓名"
         />
-        <unit.widget.PutiRecordItem
-            android:id="@+id/sex"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:record_title="性别"
-            />
     </LinearLayout>
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dp_20"
+                android:gravity="left|center_vertical"
+                >
+                <unit.widget.PutiRecordItem
+                    android:id="@+id/sex"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:record_title="性别"
+                    />
+            </LinearLayout>
     <!--民族 - 出生日期-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -197,7 +204,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:record_title="父亲"
+                    app:record_title="家长"
                     />
             </LinearLayout>
             <LinearLayout
@@ -213,7 +220,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:record_title="电话"
+                    app:record_title="家长电话"
                     />
             </LinearLayout>
         <!--父亲身份证-->
@@ -229,57 +236,11 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:record_title="身份证号"
+                    app:record_title="家长身份证号"
                     />
             </LinearLayout>
 
-            <!--母亲信息-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/dp_20"
-                android:gravity="left"
-                >
-                <unit.widget.PutiRecordItem
-                    android:id="@+id/mother_name"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:record_title="母亲"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/dp_20"
-                android:gravity="left"
-                >
-                <unit.widget.PutiRecordItem
-                    android:id="@+id/mother_mobile"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:record_title="电话"
-                    />
-            </LinearLayout>
-            <!--母亲身份证-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/dp_20"
-                android:gravity="left"
-                >
-                <unit.widget.PutiRecordItem
-                    android:id="@+id/mother_card"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:record_title="身份证号"
-                    />
-            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -317,6 +278,15 @@
                     android:layout_weight="1"
                     app:record_title="院系"
                     />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dp_20"
+                android:gravity="left"
+                >
                 <unit.widget.PutiRecordItem
                     android:id="@+id/stu_id"
                     android:layout_width="0dp"
@@ -339,6 +309,14 @@
                     android:layout_weight="1"
                     app:record_title="学籍状态"
                     />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dp_20"
+                android:gravity="left"
+                >
                 <unit.widget.PutiRecordItem
                     android:id="@+id/stu_in_school"
                     android:layout_width="0dp"
@@ -347,7 +325,6 @@
                     app:record_title="入校时间"
                     />
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -362,6 +339,15 @@
                     android:layout_weight="1"
                     app:record_title="校内住宿"
                     />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dp_20"
+                android:gravity="left"
+                >
+
                 <unit.widget.PutiRecordItem
                     android:id="@+id/stu_dorm_number"
                     android:layout_width="0dp"

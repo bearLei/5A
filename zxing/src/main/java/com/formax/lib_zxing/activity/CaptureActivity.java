@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 
 import com.formax.lib_zxing.R;
 
@@ -24,6 +25,12 @@ public class CaptureActivity extends AppCompatActivity {
         setContentView(R.layout.camera);
         CaptureFragment captureFragment = new CaptureFragment();
         captureFragment.setAnalyzeCallback(analyzeCallback);
+        findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_zxing_container, captureFragment).commit();
         captureFragment.setCameraInitCallBack(new CaptureFragment.CameraInitCallBack() {
             @Override

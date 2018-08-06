@@ -48,12 +48,6 @@ public class StuBaseInfoHolder extends BaseHolder<StudentInfo> {
     PutiRecordItem fatherMobile;
     @BindView(R.id.father_card)
     PutiRecordItem fatherCard;
-    @BindView(R.id.mother_name)
-    PutiRecordItem motherName;
-    @BindView(R.id.mother_mobile)
-    PutiRecordItem motherMobile;
-    @BindView(R.id.mother_card)
-    PutiRecordItem motherCard;
     @BindView(R.id.pull_down)
     ImageView pullDown;
     @BindView(R.id.content_layout)
@@ -87,7 +81,7 @@ public class StuBaseInfoHolder extends BaseHolder<StudentInfo> {
     protected View initView(Context context) {
         mRootView = InflateService.g().inflate(R.layout.puti_stu_record_base_info_holder);
         ButterKnife.bind(this, mRootView);
-        pullDown.setOnClickListener(new View.OnClickListener() {
+        title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 hide = !hide;
@@ -130,12 +124,6 @@ public class StuBaseInfoHolder extends BaseHolder<StudentInfo> {
             fatherName.setTDesc(stuFatherInfo.getUserName());
             fatherMobile.setTDesc(stuFatherInfo.getMobile());
             fatherCard.setTDesc(stuFatherInfo.getIdCard());
-        }
-        //母亲信息
-        if (stuMotherInfo != null) {
-            motherName.setTDesc(stuMotherInfo.getUserName());
-            motherMobile.setTDesc(stuMotherInfo.getMobile());
-            motherCard.setTDesc(stuMotherInfo.getIdCard());
         }
 
         if (studentInfoms != null) {
