@@ -17,6 +17,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import unit.entity.StuHealth;
 import unit.entity.StuHealthInfo;
 import unit.entity.StuHealthMor;
 import unit.entity.StuHealthMoraInfo;
@@ -63,15 +64,15 @@ public class StuHealthHolder extends BaseHolder<StuHealthInfo> {
         if (data == null) {
             return;
         }
-        List<StuHealthMoraInfo> stuMoraInfo = data.getStuMoraInfo();
+        List<StuHealth> stuMoraInfo = data.getStuHealth();
 
-        ArrayList<StuHealthMor> stuHealthMors = new ArrayList<>();
+//        ArrayList<StuHealth> stuHealths = new ArrayList<>();
+//
+//        for (int i = 0; i < stuMoraInfo.size(); i++) {
+//            stuHealths.addAll(stuMoraInfo.get(i).getStuMor());
+//        }
 
-        for (int i = 0; i < stuMoraInfo.size(); i++) {
-            stuHealthMors.addAll(stuMoraInfo.get(i).getStuMor());
-        }
-
-        mAdapter = new StuRecordHealthAdapter(mContext, stuHealthMors);
+        mAdapter = new StuRecordHealthAdapter(mContext, (ArrayList<StuHealth>) stuMoraInfo);
 
         healthList.setAdapter(mAdapter);
     }

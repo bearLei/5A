@@ -263,4 +263,17 @@ public class PutiTeacherModel extends PutiBaseModel{
                     }
                 });
     }
+
+
+    public void getTermStudentEvents(String classUid,final  BaseListener listener){
+        mTeacherApi.getTermStudentEvents(classUid,"")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new PutiCommonSubscriber(listener){
+                    @Override
+                    public void onNext(BaseResponseInfo responseInfo) {
+                        dealJson(responseInfo,listener);
+                    }
+                });
+    }
 }

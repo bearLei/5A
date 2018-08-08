@@ -48,8 +48,8 @@ public class TeacherBaseInfoHolder extends BaseHolder<TeacherBaseInfo> {
     PutiRecordItem code;
     @BindView(R.id.own_major)
     PutiRecordItem ownMajor;
-    @BindView(R.id.zhichen_level)
-    PutiRecordItem zhichenLevel;
+    @BindView(R.id.zhiwu)
+    PutiRecordItem zhiwu;
     @BindView(R.id.current_status)
     PutiRecordItem currentStatus;
     @BindView(R.id.height_education)
@@ -58,6 +58,10 @@ public class TeacherBaseInfoHolder extends BaseHolder<TeacherBaseInfo> {
     PutiRecordItem graduationTime;
     @BindView(R.id.content_layout)
     LinearLayout contentLayout;
+    @BindView(R.id.graduation_major)
+    PutiRecordItem graduationMajor;
+    @BindView(R.id.graduation_school)
+    PutiRecordItem graduationSchool;
 
 
     private boolean hide;
@@ -106,13 +110,13 @@ public class TeacherBaseInfoHolder extends BaseHolder<TeacherBaseInfo> {
 
         ownMajor.setTDesc(data.getMajor());
 
-        zhichenLevel.setTDesc(data.getJobTitle());
+        zhiwu.setTDesc(data.getJob());
 
 
-        // TODO: 2018/6/20 目前在职状态
-        currentStatus.setTDesc("在职");
-        heightEducation.setTDesc(data.getGraduate());
+        currentStatus.setTDesc(data.isJobType() ? "专职" : "兼职");
+        heightEducation.setTDesc(data.getEducation());
         graduationTime.setTDesc(data.getGraduateTime());
-
+        graduationMajor.setTDesc(data.getMajor());
+        graduationSchool.setTDesc(data.getGraduate());
     }
 }

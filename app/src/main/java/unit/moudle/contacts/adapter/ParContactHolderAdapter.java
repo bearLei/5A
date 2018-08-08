@@ -54,15 +54,11 @@ public class ParContactHolderAdapter extends BaseAdapter {
             convertView = InflateService.g().inflate(R.layout.puti_par_contact_holder_adapter_item);
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewUtils.dip2px(context,100));
+                    ViewUtils.dip2px(context,60));
             convertView.setLayoutParams(params);
             viewHolder.name = (TextView) convertView.findViewById(R.id.name);
-            viewHolder.guardian = (TextView) convertView.findViewById(R.id.guardian);
-            viewHolder.guandianMoble = (TextView) convertView.findViewById(R.id.guardian_mobile);
             viewHolder.fName = (TextView) convertView.findViewById(R.id.fname);
             viewHolder.fMobile = (TextView) convertView.findViewById(R.id.fmobile);
-            viewHolder.mName = (TextView) convertView.findViewById(R.id.mname);
-            viewHolder.mMobile = (TextView) convertView.findViewById(R.id.mmobile);
             viewHolder.line = convertView.findViewById(R.id.line_bottom);
             convertView.setTag(viewHolder);
         }else {
@@ -77,17 +73,13 @@ public class ParContactHolderAdapter extends BaseAdapter {
         ParContactInfo.ParContactDetailInfo info = mData.get(position);
 
         viewHolder.name.setText(info.getStudentName());
-        viewHolder.guardian.setText(info.getGuardian());
-        viewHolder.guandianMoble.setText(info.getGuardianPhone());
         viewHolder.fName.setText(info.getParent());
         viewHolder.fMobile.setText(info.getParentPhone());
-//        viewHolder.mName.setText(info.getMother());
-//        viewHolder.mMobile.setText(info.getMotherPhone());
         return convertView;
     }
 
     public class ViewHolder{
-        public TextView name,guardian,guandianMoble,fName,fMobile,mName,mMobile;
+        public TextView name,fName,fMobile;
         private View line;
     }
 

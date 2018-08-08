@@ -47,7 +47,7 @@ public class StuRecordCharacterAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null){
-            convertView = InflateService.g().inflate(R.layout.stu_moral_character_adapter_item);
+            convertView = InflateService.g().inflate(R.layout.stu_moral_character_adapter_item_left);
             holder = new ViewHolder();
             holder.index = (TextView) convertView.findViewById(R.id.index);
             holder.eventType = (TextView) convertView.findViewById(R.id.eventType);

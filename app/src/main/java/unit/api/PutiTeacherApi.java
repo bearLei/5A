@@ -65,4 +65,9 @@ public interface PutiTeacherApi {
     Observable<BaseResponseInfo> getUnUsedEvents(@Query("classUID")String classUID,
                                                   @Query("termUID")String termUID
     );
+
+    @GET("Teacher/TermStudentEvents")//获取为录入时间
+    Observable<BaseResponseInfo> getTermStudentEvents(@Query("classUID")String classUID,
+                                                 @Query("termUID")String termUID
+    );
 }

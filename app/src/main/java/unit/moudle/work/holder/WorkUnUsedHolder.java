@@ -15,7 +15,11 @@ import com.puti.education.base.InflateService;
 import com.puti.education.base.holder.BaseHolder;
 import com.puti.education.util.ViewUtils;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,27 +59,33 @@ public class WorkUnUsedHolder extends BaseHolder<PutiUnUsedEntity> {
         if (data == null){
             return;
         }
-        List<String> monthList = data.getMonthList();
-        List<String> termList = data.getTermList();
-        List<String> weekList = data.getWeekList();
+        HashMap<String,Integer> monthList = data.getMonthList();
+        HashMap<String,Integer>  termList = data.getTermList();
+        HashMap<String,Integer>  weekList = data.getWeekList();
         monthContainer.removeAllViews();
         weekContainer.removeAllViews();
         termContainer.removeAllViews();
-
-        for (String s : weekList) {
-            buildItem(s,weekContainer);
+//
+        Iterator<Map.Entry<String, Integer>> iterator = monthList.entrySet().iterator();
+        while (iterator.hasNext()){
+            Map.Entry<String, Integer> next = iterator.next();
+            buildItem(next.getKey(),next.getValue(),monthContainer);
+        }
+        Iterator<Map.Entry<String, Integer>> iterator1 = weekList.entrySet().iterator();
+        while (iterator1.hasNext()){
+            Map.Entry<String, Integer> next = iterator1.next();
+            buildItem(next.getKey(),next.getValue(),weekContainer);
         }
 
-        for (String s : monthList) {
-            buildItem(s,monthContainer);
+        Iterator<Map.Entry<String, Integer>> iterator2 = termList.entrySet().iterator();
+        while (iterator2.hasNext()){
+            Map.Entry<String, Integer> next = iterator2.next();
+            buildItem(next.getKey(),next.getValue(),termContainer);
         }
 
-        for (String s : termList) {
-            buildItem(s,termContainer);
-        }
     }
 
-    private void buildItem(String title, ViewGroup container){
+    private void buildItem(String title, int status,ViewGroup container){
         View view = InflateService.g().inflate(R.layout.work_un_used_event_item);
         FlexboxLayout.LayoutParams param = new FlexboxLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         param.leftMargin = ViewUtils.dip2px(mContext,15);
@@ -83,6 +93,12 @@ public class WorkUnUsedHolder extends BaseHolder<PutiUnUsedEntity> {
         param.bottomMargin = ViewUtils.dip2px(mContext,15);
         view.setLayoutParams(param);
         TextView textView = (TextView) view.findViewById(R.id.title);
+        LinearLayout root = (LinearLayout) view.findViewById(R.id.container);
+        if (status >= 0){
+            root.setBackgroundResource(R.drawable.bg_shape_work_unused_item);
+        }else {
+            root.setBackgroundResource(R.drawable.bg_shape_work_used_item);
+        }
         textView.setText(title);
         container.addView(view);
     }

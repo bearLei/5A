@@ -17,6 +17,7 @@
             android:textColor="#39BCA1"
             android:textSize="14sp"
             android:drawableLeft="@drawable/back"
+            android:gravity="center_vertical"
             android:layout_marginLeft="15dp"
             />
         <TextView

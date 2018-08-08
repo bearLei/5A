@@ -107,9 +107,9 @@ public class PutiTeacherPtr implements BaseMvpPtr {
             ClaRecordInfo info = new ClaRecordInfo();
             if (null != claHeadRecords.get(i)) {
                 info.setClassName(claHeadRecords.get(i).getClassName());
+                info.setScore(claHeadRecords.get(i).getScore());
             }
             info.setMajor("班主任");
-            info.setNum(i+1);
             list.add(info);
         }
         List<ClaRecordEntity.ClaTeaRecord> claTeaRecords = entity.getClaTeaRecords();
@@ -117,9 +117,9 @@ public class PutiTeacherPtr implements BaseMvpPtr {
             ClaRecordInfo info = new ClaRecordInfo();
             if (null != claTeaRecords.get(i)) {
                 info.setClassName(claTeaRecords.get(i).getClassName());
+                info.setScore(claTeaRecords.get(i).getScore());
             }
             info.setMajor("任课老师");
-            info.setNum(claHeadRecords.size()+i+1);
             list.add(info);
         }
 

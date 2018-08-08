@@ -74,7 +74,13 @@
                 android:orientation="vertical"
                 android:layout_marginTop="@dimen/dp_20"
                 ></LinearLayout>
-
+            <LinearLayout
+                android:id="@+id/less_Container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/dp_20"
+                ></LinearLayout>
         </LinearLayout>
     </ScrollView>
     <unit.widget.LoadingView

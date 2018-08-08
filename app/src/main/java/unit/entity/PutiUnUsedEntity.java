@@ -1,5 +1,6 @@
 package unit.entity;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -7,34 +8,34 @@ import java.util.List;
  */
 
 public class PutiUnUsedEntity {
-    private List<String> termList;
-    private List<String> monthList;
-    private List<String> weekList;
+    private HashMap<String,Integer> termList;
+    private HashMap<String,Integer> monthList;
+    private HashMap<String,Integer> weekList;
 
     public PutiUnUsedEntity() {
     }
 
-    public List<String> getTermList() {
+    public HashMap<String, Integer> getTermList() {
         return termList;
     }
 
-    public void setTermList(List<String> termList) {
+    public void setTermList(HashMap<String, Integer> termList) {
         this.termList = termList;
     }
 
-    public List<String> getMonthList() {
+    public HashMap<String, Integer> getMonthList() {
         return monthList;
     }
 
-    public void setMonthList(List<String> monthList) {
+    public void setMonthList(HashMap<String, Integer> monthList) {
         this.monthList = monthList;
     }
 
-    public List<String> getWeekList() {
+    public HashMap<String, Integer> getWeekList() {
         return weekList;
     }
 
-    public void setWeekList(List<String> weekList) {
+    public void setWeekList(HashMap<String, Integer> weekList) {
         this.weekList = weekList;
     }
 }

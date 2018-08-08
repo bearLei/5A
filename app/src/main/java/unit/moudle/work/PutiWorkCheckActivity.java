@@ -38,6 +38,8 @@ public class PutiWorkCheckActivity extends PutiActivity implements WorkCheckView
     LinearLayout container;
     @BindView(R.id.unUsed_Container)
     LinearLayout unUsedContainer;
+    @BindView(R.id.less_Container)
+    LinearLayout lessContainer;
 
 
     private WorkCheckPtr mPtr;
@@ -103,6 +105,12 @@ public class PutiWorkCheckActivity extends PutiActivity implements WorkCheckView
     }
 
     @Override
+    public void addLessView(View view) {
+        lessContainer.removeAllViews();
+        lessContainer.addView(view);
+    }
+
+    @Override
     public void showSuccessView() {
         emptyView.setVisibility(View.GONE);
         hideLoading();
@@ -143,5 +151,10 @@ public class PutiWorkCheckActivity extends PutiActivity implements WorkCheckView
     }
 
 
-
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
 }

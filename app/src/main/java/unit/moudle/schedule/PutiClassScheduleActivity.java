@@ -1,5 +1,6 @@
 package unit.moudle.schedule;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.*;
 
@@ -59,6 +60,7 @@ public class PutiClassScheduleActivity extends PutiActivity {
     private ArrayList<CursorInfo> mFriDayList;
     private ArrayList<CursorInfo> mSaturDayList;
     private ArrayList<CursorInfo> mSunDayList;
+
     @Override
     public int getContentView() {
         return R.layout.puti_class_schedule_acitivity;
@@ -92,10 +94,14 @@ public class PutiClassScheduleActivity extends PutiActivity {
                 finish();
             }
         });
-        headview.setTitle("班级课表");
+        headview.setTitle(returnTitle());
 
         initList();
 
+    }
+
+    public String returnTitle(){
+        return "班级课表";
     }
 
     @Override
@@ -153,8 +159,16 @@ public class PutiClassScheduleActivity extends PutiActivity {
             public void responseListResult(Object infoObj, Object listObj, PageInfo pageInfo, int code, boolean status) {
                 ArrayList<CursorInfo> list = (ArrayList<CursorInfo>) listObj;
                 buildData(list);
+
+                int count = 0;
+                for (int i = 0; i < list.size(); i++) {
+                    String courseName = list.get(i).getCourseName();
+                    if (!TextUtils.isEmpty(courseName)){
+                        count++;
+                    }
+                }
                 StringBuilder builder = new StringBuilder();
-                builder.append("本班本周共有").append(list.size()).append("节课");
+                builder.append("本班本周共有").append(count).append("节课");
                 weekClass.setText(builder.toString());
             }
 
@@ -227,6 +241,9 @@ public class PutiClassScheduleActivity extends PutiActivity {
 
         for (int i = 0; i < data.size(); i++) {
             CursorInfo cursorInfo = data.get(i);
+            if (TextUtils.isEmpty(cursorInfo.getCourseName())){
+                continue;
+            }
             switch (cursorInfo.getWeekday()){
                 case 1:
                     mMonDayList.add(cursorInfo);

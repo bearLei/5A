@@ -8,7 +8,7 @@ public class ClaRecordInfo {
     private int num;
     private String className;
     private String major;
-
+    private double Score;
     public ClaRecordInfo() {
     }
 
@@ -34,5 +34,13 @@ public class ClaRecordInfo {
 
     public void setMajor(String major) {
         this.major = major;
+    }
+
+    public double getScore() {
+        return Score;
+    }
+
+    public void setScore(double score) {
+        Score = score;
     }
 }

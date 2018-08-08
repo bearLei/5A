@@ -52,6 +52,7 @@ public class TeacherRecordAdapter extends BaseAdapter {
             holder.num = (TextView) convertView.findViewById(R.id.num_index);
             holder.className = (TextView) convertView.findViewById(R.id.class_name);
             holder.major = (TextView) convertView.findViewById(R.id.major);
+            holder.score = (TextView) convertView.findViewById(R.id.score);
             convertView.setTag(holder);
         }else {
             holder = (ViewHolder) convertView.getTag();
@@ -60,12 +61,12 @@ public class TeacherRecordAdapter extends BaseAdapter {
         holder.num.setText(String.valueOf(info.getNum()));
         holder.className.setText(info.getClassName());
         holder.major.setText(info.getMajor());
-
+        holder.score.setText(String.valueOf(info.getScore()));
         return convertView;
     }
 
     public class ViewHolder{
-        public TextView num,className,major;
+        public TextView num,className,major,score;
     }
 
 }

@@ -50,7 +50,7 @@ public class ParContactsHolder extends BaseHolder<ParShowContactInfo> {
             return;
         }
 
-        letter.setText(data.getLetter());
+        letter.setText(data.getLetter().toUpperCase());
         mAdapter = new ParContactHolderAdapter(mContext,data.getContactInfos());
         contactList.setAdapter(mAdapter);
     }

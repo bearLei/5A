@@ -12,4 +12,8 @@ import unit.util.UserInfoUtils;
 
 public class PutiMyScheduleActivity extends PutiClassScheduleActivity {
 
+    @Override
+    public String returnTitle() {
+        return "我的课表";
+    }
 }

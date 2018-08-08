@@ -11,6 +11,7 @@ import com.puti.education.base.InflateService;
 
 import java.util.ArrayList;
 
+import unit.entity.StuHealth;
 import unit.entity.StuHealthMor;
 import unit.entity.StuMor;
 
@@ -20,9 +21,9 @@ import unit.entity.StuMor;
 public class StuRecordHealthAdapter extends BaseAdapter {
 
     private Context context;
-    private ArrayList<StuHealthMor> mData;
+    private ArrayList<StuHealth> mData;
 
-    public StuRecordHealthAdapter(Context context, ArrayList<StuHealthMor> mData) {
+    public StuRecordHealthAdapter(Context context, ArrayList<StuHealth> mData) {
         this.context = context;
         this.mData = mData;
     }
@@ -60,12 +61,12 @@ public class StuRecordHealthAdapter extends BaseAdapter {
         }
         holder = (ViewHolder) convertView.getTag();
 
-        StuHealthMor stuHealthMor = mData.get(position);
+        StuHealth stuHealth = mData.get(position);
         holder.index.setText(String.valueOf(position+1));
-        if (stuHealthMor != null) {
-            holder.eventType.setText(stuHealthMor.getTypeName());
-            holder.score.setText(String.valueOf(stuHealthMor.getScore()));
-            holder.term.setText("");
+        if (stuHealth != null) {
+            holder.eventType.setText(stuHealth.getTitle());
+            holder.score.setText(String.valueOf(stuHealth.getScore()));
+            holder.term.setText(stuHealth.getValue()+stuHealth.getUnit());
         }
         return convertView;
     }

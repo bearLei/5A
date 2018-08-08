@@ -8,7 +8,7 @@ import java.util.List;
 public class StuHealthInfo {
 
     private List<StuHealthMoraInfo> stuMoraInfo;
-
+    private List<StuHealth> stuHealth;
     public StuHealthInfo() {
     }
 
@@ -18,5 +18,13 @@ public class StuHealthInfo {
 
     public void setStuMoraInfo(List<StuHealthMoraInfo> stuMoraInfo) {
         this.stuMoraInfo = stuMoraInfo;
+    }
+
+    public List<StuHealth> getStuHealth() {
+        return stuHealth;
+    }
+
+    public void setStuHealth(List<StuHealth> stuHealth) {
+        this.stuHealth = stuHealth;
     }
 }

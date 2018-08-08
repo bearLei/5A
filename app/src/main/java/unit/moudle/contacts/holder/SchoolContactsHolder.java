@@ -53,7 +53,7 @@ public class SchoolContactsHolder extends BaseHolder<SchoolContactInfo> {
             return;
         }
 
-        letter.setText(data.getLetter());
+        letter.setText(data.getLetter().toUpperCase());
         mAdapter = new SchoolContactHolderAdapter(mContext,data.getContactInfos());
         contactList.setAdapter(mAdapter);
     }

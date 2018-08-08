@@ -13,11 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import unit.api.PutiTeacherModel;
+import unit.base.BaseResponseInfo;
 import unit.entity.ClassSimple;
 import unit.entity.PutiUnUsedEntity;
 import unit.entity.PutiWeekEventImp;
+import unit.entity.StuLessEvent;
 import unit.entity.WeekEvent;
 import unit.moudle.work.holder.WorkEventCountHolder;
+import unit.moudle.work.holder.WorkStuLessHolder;
 import unit.moudle.work.holder.WorkUnUsedHolder;
 import unit.moudle.work.view.WorkCheckView;
 
@@ -33,6 +36,7 @@ public class WorkCheckPtr implements BaseMvpPtr {
 
     private WorkEventCountHolder workEventCountHolder;
     private WorkUnUsedHolder workUnUsedHolder;
+    private WorkStuLessHolder workStuLessHolder;
     public WorkCheckPtr(Context mContext, WorkCheckView mView) {
         this.mContext = mContext;
         this.mView = mView;
@@ -42,6 +46,7 @@ public class WorkCheckPtr implements BaseMvpPtr {
     public void star() {
         initWorkEventCountHolder();
         initWorkEventUnusedHolder();
+        initWorkLessHolder();
         queryClass();
     }
 
@@ -60,6 +65,7 @@ public class WorkCheckPtr implements BaseMvpPtr {
                 //默认拉取第一个班级的课表
                 getWeekEvent(mClassList.get(0).getUID());
                 getUnUseEvent(mClassList.get(0).getUID());
+                getTermStudentEvents(mClassList.get(0).getUID());
                 mView.setClassName(mClassList.get(0).getName());
             }
 
@@ -87,6 +93,7 @@ public class WorkCheckPtr implements BaseMvpPtr {
                 mView.setClassName(name);
                 getWeekEvent(uid);
                 getUnUseEvent(uid);
+                getTermStudentEvents(uid);
                 dropView.dismiss();
             }
         });
@@ -133,6 +140,27 @@ public class WorkCheckPtr implements BaseMvpPtr {
         });
     }
 
+    private void getTermStudentEvents(String classUid){
+      PutiTeacherModel.getInstance().getTermStudentEvents(classUid,new BaseListener(StuLessEvent.class){
+          @Override
+          public void responseListResult(Object infoObj, Object listObj, PageInfo pageInfo, int code, boolean status) {
+              super.responseListResult(infoObj, listObj, pageInfo, code, status);
+              ArrayList<StuLessEvent> lessEvents = (ArrayList<StuLessEvent>) listObj;
+              workStuLessHolder.setData(lessEvents);
+          }
+
+          @Override
+          public void responseResult(Object infoObj, Object listObj, int code, boolean status) {
+              super.responseResult(infoObj, listObj, code, status);
+          }
+
+          @Override
+          public void requestFailed(boolean status, int code, String errorMessage) {
+              super.requestFailed(status, code, errorMessage);
+          }
+      });
+    }
+
     private void initWorkEventCountHolder(){
         if (workEventCountHolder == null){
             workEventCountHolder = new WorkEventCountHolder(mContext);
@@ -144,6 +172,13 @@ public class WorkCheckPtr implements BaseMvpPtr {
             workUnUsedHolder = new WorkUnUsedHolder(mContext);
         }
         mView.addUnUsedView(workUnUsedHolder.getRootView());
+    }
+
+    private void initWorkLessHolder(){
+        if (workStuLessHolder == null){
+            workStuLessHolder = new WorkStuLessHolder(mContext);
+        }
+        mView.addLessView(workStuLessHolder.getRootView());
     }
 
 }

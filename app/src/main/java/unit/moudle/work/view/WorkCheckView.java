@@ -12,5 +12,6 @@ public interface WorkCheckView extends BaseMvpView{
     void setClassName(String name);
     void addChartView(View view);
     void addUnUsedView(View view);
+    void addLessView(View view);
     void showSuccessView();
 }

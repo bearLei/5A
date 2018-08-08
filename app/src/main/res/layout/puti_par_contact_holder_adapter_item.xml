@@ -8,6 +8,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_15"
+        android:paddingRight="@dimen/dp_35"
+        android:gravity="center_vertical"
         >
     <TextView
         android:id="@+id/name"
@@ -16,126 +21,40 @@
         android:layout_weight="1"
         android:textColor="@color/base_666666"
         android:textSize="@dimen/sp_12"
-        android:layout_marginLeft="@dimen/dp_15"
-        android:layout_marginTop="@dimen/dp_6"
     />
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="3"
-        android:orientation="vertical"
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="left|center_vertical"
-            android:paddingTop="@dimen/dp_6"
-            android:paddingBottom="@dimen/dp_6"
-            >
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/base_666666"
-                android:textSize="@dimen/sp_12"
-                android:text="监护人"
+            android:layout_weight="1"
+            android:textColor="@color/base_666666"
+            android:textSize="@dimen/sp_12"
+            android:text="家长"
+            />
+        <TextView
+            android:id="@+id/fname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/base_666666"
+            android:textSize="@dimen/sp_12"
+            />
+        <TextView
+            android:id="@+id/fmobile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/base_666666"
+            android:textSize="@dimen/sp_12"
+            />
 
-                />
-            <TextView
-                android:id="@+id/guardian"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/base_666666"
-                android:textSize="@dimen/sp_12"
-                />
-            <TextView
-                android:id="@+id/guardian_mobile"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/base_666666"
-                android:textSize="@dimen/sp_12"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="left|center_vertical"
-            android:paddingTop="@dimen/dp_6"
-            android:paddingBottom="@dimen/dp_6"
-            android:layout_marginRight="@dimen/dp_40"
-            >
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/base_666666"
-                android:textSize="@dimen/sp_12"
-                android:text="家长"
-                />
-            <TextView
-                android:id="@+id/fname"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/base_666666"
-                android:textSize="@dimen/sp_12"
-                />
-            <TextView
-                android:id="@+id/fmobile"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/base_666666"
-                android:textSize="@dimen/sp_12"
-                />
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="left|center_vertical"
-            android:visibility="gone"
-            >
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/base_666666"
-                android:textSize="@dimen/sp_12"
-                android:text="母亲"
-                android:paddingTop="@dimen/dp_6"
-                android:paddingBottom="@dimen/dp_6"
-                />
-            <TextView
-                android:id="@+id/mname"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/base_666666"
-                android:textSize="@dimen/sp_12"
-                />
-            <TextView
-                android:id="@+id/mmobile"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/base_666666"
-                android:textSize="@dimen/sp_12"
-                />
-        </LinearLayout>
-    </LinearLayout>
 </LinearLayout>
     <View
         android:id="@+id/line_bottom"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@color/base_ededed"
-        android:layout_marginRight="@dimen/dp_35"
+        android:layout_marginRight="@dimen/dp_15"
         android:layout_marginLeft="@dimen/dp_15"
     />
 </LinearLayout>
