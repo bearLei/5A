@@ -58,10 +58,10 @@ public class TeacherRecordAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         ClaRecordInfo info = mData.get(position);
-        holder.num.setText(String.valueOf(info.getNum()));
+        holder.num.setText(String.valueOf(position+1));
         holder.className.setText(info.getClassName());
         holder.major.setText(info.getMajor());
-        holder.score.setText(String.valueOf(info.getScore()));
+        holder.score.setText(cut(String.valueOf(info.getScore())));
         return convertView;
     }
 
@@ -69,4 +69,10 @@ public class TeacherRecordAdapter extends BaseAdapter {
         public TextView num,className,major,score;
     }
 
+    private String cut(String s){
+        if (s.length() > 4){
+            return s.substring(0,4);
+        }else
+            return s;
+    }
 }

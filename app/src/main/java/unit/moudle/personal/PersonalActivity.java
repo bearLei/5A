@@ -3,20 +3,15 @@ package unit.moudle.personal;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 
-import com.baidu.platform.comapi.map.F;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.puti.education.R;
 import com.puti.education.base.PutiActivity;
-import com.puti.education.util.ImgLoadUtil;
-import com.puti.education.widget.EduDialog;
-
-import java.io.File;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import unit.debug.DebugActivity;
 import unit.entity.UserBaseInfo;
 import unit.eventbus.AvatarChangeEvent;
 import unit.eventbus.PutiEventBus;
@@ -39,6 +34,8 @@ public class PersonalActivity extends PutiActivity implements PersonView {
     SettingItem currentVersion;
     @BindView(R.id.headview)
     HeadView headview;
+    @BindView(R.id.debug_page)
+    SettingItem debugPage;
 
 
     private PersonPtr mPtr;
@@ -95,7 +92,7 @@ public class PersonalActivity extends PutiActivity implements PersonView {
     }
 
 
-    @OnClick({ R.id.head_icon, R.id.qr_code, R.id.invite_use, R.id.feed_back, R.id.evaluate, R.id.update_psw, R.id.trouble_help, R.id.current_version, R.id.lgout})
+    @OnClick({R.id.head_icon, R.id.qr_code, R.id.invite_use, R.id.feed_back, R.id.evaluate, R.id.update_psw, R.id.trouble_help, R.id.current_version, R.id.lgout,R.id.debug_page})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.head_icon:
@@ -124,6 +121,9 @@ public class PersonalActivity extends PutiActivity implements PersonView {
                 break;
             case R.id.lgout:
                 mPtr.ReqlogoutDialog();
+                break;
+            case R.id.debug_page:
+                startActivity(new Intent(PersonalActivity.this, DebugActivity.class));
                 break;
         }
     }
@@ -160,4 +160,5 @@ public class PersonalActivity extends PutiActivity implements PersonView {
     public void showEmptyView() {
 
     }
+
 }

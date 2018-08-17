@@ -15,6 +15,8 @@ import com.puti.education.util.ViewUtils;
 
 import unit.debug.DebugActivity;
 import unit.moudle.classevent.PutiClassEventActivity;
+import unit.moudle.contacts.PutiParentContactsActivity;
+import unit.moudle.contacts.PutiSchoolContactsActivity;
 import unit.moudle.eventdeal.EventListActivity;
 import unit.moudle.eventregist.PutiChooseEventActivity;
 import unit.moudle.ques.PutiQuesActivity;
@@ -120,18 +122,18 @@ public class HomePowerHolder extends BaseHolder<Object>{
                     }
                 }));
         //我的问卷
-        mQuesHolder = new HomeBaseItemHolder(mContext, new HomeBaseItemHolder.ItemClickListener() {
-            @Override
-            public void itemClick() {
-                setmQuesHolderRedDog(false);
-                DataStorage.putUserQues(false);
-                jump(PutiQuesActivity.class);
-            }
-        });
-        mQuesHolder.showRedDog(DataStorage.getUserHasQues());
-        mParentView.addView(getItem(mQuesHolder,
-                R.drawable.puti_home_my_psq,
-                R.string.puti_home_my_question));
+//        mQuesHolder = new HomeBaseItemHolder(mContext, new HomeBaseItemHolder.ItemClickListener() {
+//            @Override
+//            public void itemClick() {
+//                setmQuesHolderRedDog(false);
+//                DataStorage.putUserQues(false);
+//                jump(PutiQuesActivity.class);
+//            }
+//        });
+//        mQuesHolder.showRedDog(DataStorage.getUserHasQues());
+//        mParentView.addView(getItem(mQuesHolder,
+//                R.drawable.puti_home_my_psq,
+//                R.string.puti_home_my_question));
 
         //工作检查
         mParentView.addView(getItem(
@@ -141,6 +143,27 @@ public class HomePowerHolder extends BaseHolder<Object>{
                     @Override
                     public void itemClick() {
                         jump(PutiWorkCheckActivity.class);
+                    }
+                }));
+        //校园通讯录
+        mParentView.addView(getItem(
+                R.drawable.puti_home_school_phone_book,
+                R.string.puti_home_school_phone_book,
+                new HomeBaseItemHolder.ItemClickListener() {
+                    @Override
+                    public void itemClick() {
+                        jump(PutiSchoolContactsActivity.class);
+                    }
+                }));
+
+        //家长通讯录
+        mParentView.addView(getItem(
+                R.drawable.puti_home_parent_phone_book,
+                R.string.puti_home_parent_phone_book,
+                new HomeBaseItemHolder.ItemClickListener() {
+                    @Override
+                    public void itemClick() {
+                        jump(PutiParentContactsActivity.class);
                     }
                 }));
     }
@@ -171,9 +194,9 @@ public class HomePowerHolder extends BaseHolder<Object>{
     }
 
     //控制问卷红点
-    public void setmQuesHolderRedDog(boolean show){
-        mQuesHolder.showRedDog(show);
-    }
+//    public void setmQuesHolderRedDog(boolean show){
+//        mQuesHolder.showRedDog(show);
+//    }
 
     //控件举报红点
     public void setmReportHolderRedDog(boolean show){

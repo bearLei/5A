@@ -65,38 +65,38 @@ public class ClassEventHolder extends BaseHolder<Event> {
         deduct.setText("扣分：   "+data.getScores());
         desc.setText("描述：   "+data.getDescription());
 
-        String statusArr = data.getStatusArr();
-        String[] split = statusArr.split(",");
-        String s = split[split.length - 1];
-        switch (s){
-            case "已拒绝":
-                status.setVisibility(View.VISIBLE);
-                status.setText("已拒绝");
-                status.setTextColor(mContext.getResources().getColor(R.color.base_f03c28));
-                status.setBackground(mContext.getResources().getDrawable(R.drawable.bg_puti_refuse));
-                break;
-            case "处理中":
-                status.setVisibility(View.VISIBLE);
-                status.setText("处理中");
-                status.setTextColor(mContext.getResources().getColor(R.color.base_666666));
-                status.setBackground(mContext.getResources().getDrawable(R.drawable.bg_puti_stroke_cdcdcd));
-                break;
-            case "审核中":
-                status.setVisibility(View.VISIBLE);
-                status.setText("审核中");
-                status.setTextColor(mContext.getResources().getColor(R.color.base_666666));
-                status.setBackground(mContext.getResources().getDrawable(R.drawable.bg_puti_stroke_cdcdcd));
-                break;
-            case "已完结":
-                status.setVisibility(View.VISIBLE);
-                status.setText("已完结");
-                status.setTextColor(mContext.getResources().getColor(R.color.base_666666));
-                status.setBackground(mContext.getResources().getDrawable(R.drawable.bg_puti_stroke_cdcdcd));
-                break;
-                default:
-                    status.setVisibility(View.GONE);
-                    break;
-        }
+//        String statusArr = data.getStatusArr();
+//        String[] split = statusArr.split(",");
+//        String s = split[split.length - 1];
+//        switch (s){
+//            case "已拒绝":
+//                status.setVisibility(View.VISIBLE);
+//                status.setText("已拒绝");
+//                status.setTextColor(mContext.getResources().getColor(R.color.base_f03c28));
+//                status.setBackground(mContext.getResources().getDrawable(R.drawable.bg_puti_refuse));
+//                break;
+//            case "处理中":
+//                status.setVisibility(View.VISIBLE);
+//                status.setText("处理中");
+//                status.setTextColor(mContext.getResources().getColor(R.color.base_666666));
+//                status.setBackground(mContext.getResources().getDrawable(R.drawable.bg_puti_stroke_cdcdcd));
+//                break;
+//            case "审核中":
+//                status.setVisibility(View.VISIBLE);
+//                status.setText("审核中");
+//                status.setTextColor(mContext.getResources().getColor(R.color.base_666666));
+//                status.setBackground(mContext.getResources().getDrawable(R.drawable.bg_puti_stroke_cdcdcd));
+//                break;
+//            case "已完结":
+//                status.setVisibility(View.VISIBLE);
+//                status.setText("已完结");
+//                status.setTextColor(mContext.getResources().getColor(R.color.base_666666));
+//                status.setBackground(mContext.getResources().getDrawable(R.drawable.bg_puti_stroke_cdcdcd));
+//                break;
+//                default:
+//                    status.setVisibility(View.GONE);
+//                    break;
+//        }
 
         mRootView.setOnClickListener(new View.OnClickListener() {
             @Override

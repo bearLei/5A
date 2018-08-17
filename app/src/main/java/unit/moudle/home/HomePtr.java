@@ -55,7 +55,7 @@ public class HomePtr implements BaseMvpPtr {
     private HomeCountHolder mCountHolder;//个人统计信息
     private HomePowerHolder mPowerHolder;//能力栏
     private HomeFeedBackHolder mFeedBackHolder;//有奖反馈
-    private HomeToolHolder mToolHolder;//工具栏
+//    private HomeToolHolder mToolHolder;//工具栏
     public HomePtr(Context mContext, HomeView mView) {
         this.mContext = mContext;
         this.mView = mView;
@@ -70,7 +70,7 @@ public class HomePtr implements BaseMvpPtr {
         initCountHolder();
         initPowerHolder();
         initFeedBackHolder();
-        initToolHolder();
+//        initToolHolder();
     }
 
     @Override
@@ -79,7 +79,7 @@ public class HomePtr implements BaseMvpPtr {
     }
     public void onResume(){
         queryTeaClassRecord();
-        queryQues();
+//        queryQues();
     }
 
     //初始化头部个人信息Holder
@@ -125,13 +125,13 @@ public class HomePtr implements BaseMvpPtr {
     }
 
     //初始化工具栏
-    private void initToolHolder(){
-        if (mToolHolder == null){
-            mToolHolder = new HomeToolHolder(mContext);
-            mToolHolder.setData(true);
-        }
-        mView.addToolLayout(operateSize(mToolHolder));
-    }
+//    private void initToolHolder(){
+//        if (mToolHolder == null){
+//            mToolHolder = new HomeToolHolder(mContext);
+//            mToolHolder.setData(true);
+//        }
+//        mView.addToolLayout(operateSize(mToolHolder));
+//    }
 
     private View operateSize(BaseHolder holder){
         View rootView = holder.getRootView();
@@ -158,7 +158,7 @@ public class HomePtr implements BaseMvpPtr {
                 DataStorage.putUserHasNotice(true);
                 break;
             case Msg_Ques:
-                mPowerHolder.setmQuesHolderRedDog(true);
+//                mPowerHolder.setmQuesHolderRedDog(true);
                 DataStorage.putUserQues(true);
                 mHeadHolder.setRedDog(true);
                 DataStorage.putUserHasNotice(true);
@@ -212,22 +212,22 @@ public class HomePtr implements BaseMvpPtr {
         }
 
 
-    private void queryQues() {
-        PutiTeacherModel.getInstance().getQuesList(new BaseListener(QuesInfo.class) {
-            @Override
-            public void responseListResult(Object infoObj, Object listObj, PageInfo pageInfo, int code, boolean status) {
-                ArrayList<QuesInfo> list = (ArrayList<QuesInfo>) listObj;
-                for (int i = 0; i < list.size(); i++) {
-                    if (list.get(i).getStatus() == 0){
-                        mPowerHolder.setmQuesHolderRedDog(true);
-                    }
-                }
-            }
-
-            @Override
-            public void requestFailed(boolean status, int code, String errorMessage) {
-            }
-        });
-    }
+//    private void queryQues() {
+//        PutiTeacherModel.getInstance().getQuesList(new BaseListener(QuesInfo.class) {
+//            @Override
+//            public void responseListResult(Object infoObj, Object listObj, PageInfo pageInfo, int code, boolean status) {
+//                ArrayList<QuesInfo> list = (ArrayList<QuesInfo>) listObj;
+//                for (int i = 0; i < list.size(); i++) {
+//                    if (list.get(i).getStatus() == 0){
+//                        mPowerHolder.setmQuesHolderRedDog(true);
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void requestFailed(boolean status, int code, String errorMessage) {
+//            }
+//        });
+//    }
 
 }

@@ -46,11 +46,11 @@
         android:orientation="horizontal"
         android:background="@color/base_ffffff"
         ></LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_10"
-            android:background="@color/base_ededed"
-            />
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/dp_10"-->
+            <!--android:background="@color/base_ededed"-->
+            <!--/>-->
     <!--反馈有奖-->
     <LinearLayout
         android:id="@+id/feedback_layout"

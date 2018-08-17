@@ -65,7 +65,7 @@ public class StudentAdapter extends BaseAdapter {
         if (convertView == null){
             convertView = InflateService.g().inflate(R.layout.puti_student_list_adapter);
             int wid = ViewUtils.getScreenWid(mContext)-ViewUtils.dip2px(mContext,80);
-            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(wid/4,wid/4);
+            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(wid/4,wid/4+ViewUtils.dip2px(mContext,20));
             convertView.setLayoutParams(params);
             holder = new ViewHolder();
             holder.avatar = (SimpleDraweeView) convertView.findViewById(R.id.avatar);

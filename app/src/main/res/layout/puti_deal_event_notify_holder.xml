@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/sp_14"
         android:textColor="@color/base_666666"
-        android:text="通知"
+        android:text="公示"
         android:gravity="center_vertical|left"
         />
 
@@ -27,7 +27,7 @@
         android:layout_height="match_parent"
         android:textSize="@dimen/sp_14"
         android:textColor="@color/base_333333"
-        android:text="学生处"
+        android:text="本校"
         android:gravity="center_vertical|left"
         app:layout_flexGrow="1"
         android:drawableLeft="@drawable/puti_check_cdcdcd"

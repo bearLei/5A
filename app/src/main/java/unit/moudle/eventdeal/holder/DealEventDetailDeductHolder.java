@@ -128,30 +128,21 @@ public class DealEventDetailDeductHolder extends BaseHolder<Event2Involved> {
             Map.Entry<TextView, Boolean> entry = iterator.next();
             TextView item = entry.getKey();
             if (view == item){
-                mViewSelectedMap.put(item,true);
-                item.setSelected(true);
-                item.setTextColor(mContext.getResources().getColor(R.color.base_ffffff));
-//                view.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        if (view instanceof TextView){
-//                            ((TextView) view).setTextColor(mContext.getResources().getColor(R.color.base_ffffff));
-//                        }
-//                    }
-//                },500);
+                Boolean isSelected = mViewSelectedMap.get(item);
+                if (isSelected){
+                    mViewSelectedMap.put(item,false);
+                    item.setSelected(false);
+                    item.setTextColor(mContext.getResources().getColor(R.color.base_39BCA1));
+                }else {
+                    mViewSelectedMap.put(item,true);
+                    item.setSelected(true);
+                    item.setTextColor(mContext.getResources().getColor(R.color.base_ffffff));
+                }
 
             }else {
                 mViewSelectedMap.put(item,false);
                 item.setSelected(false);
                 item.setTextColor(mContext.getResources().getColor(R.color.base_39BCA1));
-//                view.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        if (view instanceof TextView){
-//                            ((TextView) view).setTextColor(mContext.getResources().getColor(R.color.base_39BCA1));
-//                        }
-//                    }
-//                },500);
             }
         }
     }

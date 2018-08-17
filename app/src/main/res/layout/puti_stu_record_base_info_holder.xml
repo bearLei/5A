@@ -331,6 +331,7 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="@dimen/dp_20"
                 android:gravity="left"
+                android:visibility="gone"
                 >
                 <unit.widget.PutiRecordItem
                     android:id="@+id/stu_dorm_status"
@@ -346,6 +347,7 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="@dimen/dp_20"
                 android:gravity="left"
+                android:visibility="gone"
                 >
 
                 <unit.widget.PutiRecordItem

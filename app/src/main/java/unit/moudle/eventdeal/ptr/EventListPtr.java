@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.text.style.TypefaceSpan;
@@ -80,6 +81,9 @@ public class EventListPtr implements BaseMvpPtr {
         });
     }
     public void queryEvent(){
+        if (TextUtils.isEmpty(mClassUid)){
+            return;
+        }
         PutiCommonModel.getInstance().queryEvent(mClassUid,1,1, Integer.MAX_VALUE,new BaseListener(PutiEvents.class){
             @Override
             public void responseResult(Object infoObj, Object listObj, int code, boolean status) {

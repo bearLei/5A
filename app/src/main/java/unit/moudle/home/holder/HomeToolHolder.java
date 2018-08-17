@@ -70,27 +70,27 @@ public class HomeToolHolder extends BaseHolder<Object> {
                     }
                 }));
 
-        //班级课表
-        VToolContainer.addView(getItem(
-                R.drawable.puti_home_class_schedule,
-                R.string.puti_home_class_schedule,
-                new HomeBaseItemHolder.ItemClickListener() {
-                    @Override
-                    public void itemClick() {
-                        jump(PutiClassScheduleActivity.class);
-                    }
-                }));
-
-        //我的课表
-        VToolContainer.addView(getItem(
-                R.drawable.puti_home_my_schedule,
-                R.string.puti_home_my_schedule,
-                new HomeBaseItemHolder.ItemClickListener() {
-                    @Override
-                    public void itemClick() {
-                        jump(PutiMyScheduleActivity.class);
-                    }
-                }));
+//        //班级课表
+//        VToolContainer.addView(getItem(
+//                R.drawable.puti_home_class_schedule,
+//                R.string.puti_home_class_schedule,
+//                new HomeBaseItemHolder.ItemClickListener() {
+//                    @Override
+//                    public void itemClick() {
+//                        jump(PutiClassScheduleActivity.class);
+//                    }
+//                }));
+//
+//        //我的课表
+//        VToolContainer.addView(getItem(
+//                R.drawable.puti_home_my_schedule,
+//                R.string.puti_home_my_schedule,
+//                new HomeBaseItemHolder.ItemClickListener() {
+//                    @Override
+//                    public void itemClick() {
+//                        jump(PutiMyScheduleActivity.class);
+//                    }
+//                }));
 
     }
 

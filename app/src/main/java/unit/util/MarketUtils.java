@@ -19,6 +19,7 @@ public class MarketUtils {
     public static void goMarket(Context context, String packageName) {
         //这里开始执行一个应用市场跳转逻辑，默认this为Context上下文对象
         Intent intent = new Intent(Intent.ACTION_VIEW);
+        Uri parse = Uri.parse("market://details?id=" + packageName);
         intent.setData(Uri.parse("market://details?id=" + packageName)); //跳转到应用市场，非Google Play市场一般情况也实现了这个接口
         //存在手机里没安装应用市场的情况，跳转会包异常，做一个接收判断
         if (intent.resolveActivity(context.getPackageManager()) != null) { //可以接收

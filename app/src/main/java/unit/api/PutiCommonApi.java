@@ -31,7 +31,10 @@ public interface PutiCommonApi {
     Observable<BaseResponseInfo>getHomeCountInfo();
 
     @GET("Common/MyMsgs")//获取消息列表
-    Observable<BaseResponseInfo>getMessageList();
+    Observable<BaseResponseInfo>getMessageList(@Query("status")int status,
+                                               @Query("pageIndex") int pageIndex,
+                                               @Query("pageSize")int pageSize
+                                               );
 
     @POST("Common/ChangePwd")//修改密码
     Observable<BaseResponseInfo> updatePsw(@Query("oldPwd")String oldPwd,
@@ -109,4 +112,7 @@ public interface PutiCommonApi {
                                                 @Query("pageSize") int pageSize,
                                                 @Query("studentName")String studentName,
                                                 @Query("classUID")String classUID);
+
+    @POST("Common/Msg/Checked ")//清空个人信息
+    Observable<BaseResponseInfo> clearMsg(@Body RequestBody route);
 }

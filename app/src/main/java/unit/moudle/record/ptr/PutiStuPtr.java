@@ -34,8 +34,8 @@ public class PutiStuPtr implements BaseMvpPtr {
     private StuBaseInfoHolder stuBaseInfoHolder;
     private StuPortraitHolder stuPortraitHolder;
     private StuMoralCharacterHolder stuMoralCharacterHolder;
-    private StuAcademicLevelHolder stuAcademicLevelHolder;
-    private StuHealthHolder stuHealthHolder;
+//    private StuAcademicLevelHolder stuAcademicLevelHolder;
+//    private StuHealthHolder stuHealthHolder;
     private StuActivityHolder stuActivityHolder;
 
     public PutiStuPtr(Context mContext, PutiStuView mView) {
@@ -48,8 +48,8 @@ public class PutiStuPtr implements BaseMvpPtr {
         initStuBaseInfoHolder();
         initStuPortraitHolder();
         initStuMoralCharacterHolder();
-        initStuAcademicLeveleHolder();
-        initStuHealthHolder();
+//        initStuAcademicLeveleHolder();
+//        initStuHealthHolder();
         initStuActivityHolder();
 
 
@@ -57,8 +57,8 @@ public class PutiStuPtr implements BaseMvpPtr {
         queryBaseInfo();
 
         queryStuMoralCharacter();
-        queryStuAcademicLevel();
-        queryStuMentalHealth();
+//        queryStuAcademicLevel();
+//        queryStuMentalHealth();
         queryStuActivity();
     }
 
@@ -128,50 +128,50 @@ public class PutiStuPtr implements BaseMvpPtr {
         });
     }
     //查询学生专业水平信息
-    private void queryStuAcademicLevel(){
-        PutiCommonModel.getInstance().queryAcademicLevel(mView.getStudentUid(),"",new BaseListener(StuAcademicLevelInfo.class){
-            @Override
-            public void responseResult(Object infoObj, Object listObj, int code, boolean status) {
-                super.responseResult(infoObj, listObj, code, status);
-                StuAcademicLevelInfo info = (StuAcademicLevelInfo) infoObj;
-                if (stuAcademicLevelHolder != null){
-                    stuAcademicLevelHolder.setData(info);
-                }
-            }
-
-            @Override
-            public void responseListResult(Object infoObj, Object listObj, PageInfo pageInfo, int code, boolean status) {
-                super.responseListResult(infoObj, listObj, pageInfo, code, status);
-            }
-
-            @Override
-            public void requestFailed(boolean status, int code, String errorMessage) {
-                super.requestFailed(status, code, errorMessage);
-            }
-        });
-    }
-    private void queryStuMentalHealth(){
-        PutiCommonModel.getInstance().queryMentalHealth(mView.getStudentUid(),"",new BaseListener(StuHealthInfo.class){
-            @Override
-            public void responseResult(Object infoObj, Object listObj, int code, boolean status) {
-                StuHealthInfo info = (StuHealthInfo) infoObj;
-                if (stuHealthHolder != null){
-                    stuHealthHolder.setData(info);
-                }
-            }
-
-            @Override
-            public void responseListResult(Object infoObj, Object listObj, PageInfo pageInfo, int code, boolean status) {
-                super.responseListResult(infoObj, listObj, pageInfo, code, status);
-
-            }
-
-            @Override
-            public void requestFailed(boolean status, int code, String errorMessage) {
-                super.requestFailed(status, code, errorMessage);
-            }
-        });
-    }
+//    private void queryStuAcademicLevel(){
+//        PutiCommonModel.getInstance().queryAcademicLevel(mView.getStudentUid(),"",new BaseListener(StuAcademicLevelInfo.class){
+//            @Override
+//            public void responseResult(Object infoObj, Object listObj, int code, boolean status) {
+//                super.responseResult(infoObj, listObj, code, status);
+//                StuAcademicLevelInfo info = (StuAcademicLevelInfo) infoObj;
+//                if (stuAcademicLevelHolder != null){
+//                    stuAcademicLevelHolder.setData(info);
+//                }
+//            }
+//
+//            @Override
+//            public void responseListResult(Object infoObj, Object listObj, PageInfo pageInfo, int code, boolean status) {
+//                super.responseListResult(infoObj, listObj, pageInfo, code, status);
+//            }
+//
+//            @Override
+//            public void requestFailed(boolean status, int code, String errorMessage) {
+//                super.requestFailed(status, code, errorMessage);
+//            }
+//        });
+//    }
+//    private void queryStuMentalHealth(){
+//        PutiCommonModel.getInstance().queryMentalHealth(mView.getStudentUid(),"",new BaseListener(StuHealthInfo.class){
+//            @Override
+//            public void responseResult(Object infoObj, Object listObj, int code, boolean status) {
+//                StuHealthInfo info = (StuHealthInfo) infoObj;
+//                if (stuHealthHolder != null){
+//                    stuHealthHolder.setData(info);
+//                }
+//            }
+//
+//            @Override
+//            public void responseListResult(Object infoObj, Object listObj, PageInfo pageInfo, int code, boolean status) {
+//                super.responseListResult(infoObj, listObj, pageInfo, code, status);
+//
+//            }
+//
+//            @Override
+//            public void requestFailed(boolean status, int code, String errorMessage) {
+//                super.requestFailed(status, code, errorMessage);
+//            }
+//        });
+//    }
     private void queryStuActivity(){
         PutiCommonModel.getInstance().queryActivity(mView.getStudentUid(),"",new BaseListener(StuActivityInfo.class){
             @Override
@@ -216,20 +216,20 @@ public class PutiStuPtr implements BaseMvpPtr {
     }
 
     //学业水平
-    private void initStuAcademicLeveleHolder(){
-        if (stuAcademicLevelHolder == null){
-            stuAcademicLevelHolder = new StuAcademicLevelHolder(mContext);
-        }
-        mView.addAcademicLevelView(stuAcademicLevelHolder.getRootView());
-    }
+//    private void initStuAcademicLeveleHolder(){
+//        if (stuAcademicLevelHolder == null){
+//            stuAcademicLevelHolder = new StuAcademicLevelHolder(mContext);
+//        }
+//        mView.addAcademicLevelView(stuAcademicLevelHolder.getRootView());
+//    }
 
     //身心健康
-    private void initStuHealthHolder(){
-        if (stuHealthHolder == null){
-            stuHealthHolder = new StuHealthHolder(mContext);
-        }
-        mView.addMeatalHealthView(stuHealthHolder.getRootView());
-    }
+//    private void initStuHealthHolder(){
+//        if (stuHealthHolder == null){
+//            stuHealthHolder = new StuHealthHolder(mContext);
+//        }
+//        mView.addMeatalHealthView(stuHealthHolder.getRootView());
+//    }
 
     private void initStuActivityHolder(){
         if (stuActivityHolder == null){

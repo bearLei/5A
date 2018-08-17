@@ -103,6 +103,14 @@
             app:showIcon="false"
             android:background="@color/base_ffffff"
             ></unit.widget.SettingItem>
+        <unit.widget.SettingItem
+            android:id="@+id/debug_page"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60"
+            app:title="Debug页面"
+            app:showIcon="false"
+            android:background="@color/base_ffffff"
+            ></unit.widget.SettingItem>
         <!--退出登录-->
         <TextView
             android:id="@+id/lgout"

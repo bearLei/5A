@@ -116,6 +116,7 @@ public class LineChartManager implements OnChartValueSelectedListener {
                        rightAxis.setLabelCount(5);
                        leftAxis.setLabelCount(5);
                    }
+                   xAxis.setLabelCount(xAxisValues.size()+10);
                    initLineChart();
                    ArrayList<Entry> entries = new ArrayList<>();
                    for (int i = 0; i < xAxisValues.size(); i++) {

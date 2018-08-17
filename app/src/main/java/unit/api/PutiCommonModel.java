@@ -13,6 +13,7 @@ import com.puti.education.netFrame.response.ResponseInfo;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
+import rx.Scheduler;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -99,8 +100,8 @@ public class PutiCommonModel extends PutiBaseModel{
      * 教师端查询消息列表
      * @param listener 回调
      */
-    public void queryMessageList(final BaseListener listener){
-        mCommonApi.getMessageList()
+    public void queryMessageList(int status,final BaseListener listener){
+        mCommonApi.getMessageList(status,1,Integer.MAX_VALUE)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new PutiCommonSubscriber(listener){
@@ -472,5 +473,16 @@ public class PutiCommonModel extends PutiBaseModel{
     }
 
 
+    public void clearMsg(String msgList,final BaseListener listener){
+        RequestBody body=RequestBody.create(mMediaType,msgList);
+        mCommonApi.clearMsg(body).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new PutiCommonSubscriber(listener){
+                    @Override
+                    public void onNext(BaseResponseInfo responseInfo) {
+                        dealJson(responseInfo,listener);
+                    }
+                });
+    }
 
 }

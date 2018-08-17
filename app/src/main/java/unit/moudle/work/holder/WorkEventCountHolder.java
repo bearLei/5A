@@ -57,7 +57,7 @@ public class WorkEventCountHolder extends BaseHolder<PutiWeekEventImp> {
         ButterKnife.bind(this, view);
         // no description text
         int screenWid = ViewUtils.getScreenWid(mContext);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams((int) (screenWid*1.5),ViewUtils.dip2px(mContext,200));
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams((int) (screenWid*1.7),ViewUtils.dip2px(mContext,200));
         mChart.setLayoutParams(params);
         MyMarkerView mv = new MyMarkerView(mContext, R.layout.custom_marker_view);
         mv.setChartView(mChart); // For bounds control

@@ -204,7 +204,7 @@ public class AddEventDetailPtr implements BaseMvpPtr {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("Time",Time);
         jsonObject.put("PlaceUID",PlaceUID);
-        jsonObject.put("Address",Address);
+//        jsonObject.put("Address",Address);
         jsonObject.put("Description",Description);
         jsonObject.put("EventType",EventType);
 
