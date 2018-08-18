@@ -46,6 +46,7 @@
         android:drawablePadding="@dimen/dp_3"
         android:drawableLeft="@drawable/puti_check_cdcdcd"
         android:paddingBottom="@dimen/dp_5"
+        android:visibility="gone"
         />
 
     <TextView
@@ -60,6 +61,7 @@
         android:drawablePadding="@dimen/dp_3"
         android:drawableLeft="@drawable/puti_check_cdcdcd"
         android:paddingBottom="@dimen/dp_5"
+        android:visibility="gone"
         />
     </com.google.android.flexbox.FlexboxLayout>
 </RelativeLayout>

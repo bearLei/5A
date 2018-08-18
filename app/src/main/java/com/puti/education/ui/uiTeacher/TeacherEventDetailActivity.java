@@ -932,7 +932,7 @@ public class TeacherEventDetailActivity extends BaseActivity {
             }}
         );
 
-        mBtnEvent.setText("确认事件");
+        mBtnEvent.setText("确认记录");
         UserDetail eventstudent  = mEventDetail.student;
         if (eventstudent != null){
             mTvMainName.setText(eventstudent.name);
@@ -1024,7 +1024,7 @@ public class TeacherEventDetailActivity extends BaseActivity {
                 return false;
             }});
 
-        mBtnEvent.setText("处理事件");
+        mBtnEvent.setText("处理记录");
         mWarnList = new ArrayList<>();
 
         UserDetail eventstudent  = mEventDetail.student;
@@ -1227,7 +1227,7 @@ public class TeacherEventDetailActivity extends BaseActivity {
                 return false;
             }});
 
-        mBtnEvent.setText("审核事件");
+        mBtnEvent.setText("审核记录");
         setOneBtnListener();
 
     }

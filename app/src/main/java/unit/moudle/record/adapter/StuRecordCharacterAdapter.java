@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import unit.entity.StuCharacterInfo;
+import unit.entity.StuScoreInfo;
 import unit.entity.Stup;
 
 /**
@@ -20,9 +21,9 @@ import unit.entity.Stup;
  */
 public class StuRecordCharacterAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<Stup> mData;
+    private ArrayList<StuScoreInfo.IndexInfo> mData;
 
-    public StuRecordCharacterAdapter(Context context, ArrayList<Stup> mData) {
+    public StuRecordCharacterAdapter(Context context, ArrayList<StuScoreInfo.IndexInfo> mData) {
         this.context = context;
         this.mData = mData;
     }
@@ -49,7 +50,7 @@ public class StuRecordCharacterAdapter extends BaseAdapter {
         if (convertView == null){
             convertView = InflateService.g().inflate(R.layout.stu_moral_character_adapter_item_left);
             holder = new ViewHolder();
-            holder.index = (TextView) convertView.findViewById(R.id.index);
+            holder.remark = (TextView) convertView.findViewById(R.id.remark);
             holder.eventType = (TextView) convertView.findViewById(R.id.eventType);
             holder.score = (TextView) convertView.findViewById(R.id.score);
             holder.term = (TextView) convertView.findViewById(R.id.term);
@@ -57,10 +58,10 @@ public class StuRecordCharacterAdapter extends BaseAdapter {
         }
         holder = (ViewHolder) convertView.getTag();
 
-        Stup stup = mData.get(position);
-        holder.index.setText(String.valueOf(position+1));
+        StuScoreInfo.IndexInfo stup = mData.get(position);
         if (stup != null) {
             holder.eventType.setText(stup.getTypeName());
+            holder.remark.setText(stup.getIndexRemark());
             holder.score.setText(String.valueOf(stup.getScore()));
             holder.term.setText(stup.getTerm());
         }
@@ -68,6 +69,6 @@ public class StuRecordCharacterAdapter extends BaseAdapter {
     }
 
     public class ViewHolder{
-        public TextView index,eventType,score,term;
+        public TextView remark,eventType,score,term;
     }
 }

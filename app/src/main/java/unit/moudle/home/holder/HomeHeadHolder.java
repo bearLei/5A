@@ -65,6 +65,7 @@ public class HomeHeadHolder extends BaseHolder<Object> {
         if (UserInfoUtils.isInLoginStata()) {
             UserBaseInfo userInfo = UserInfoUtils.getUserInfo();
             headIcon.setImageURI(userInfo.getAvatar());
+
             nickName.setText(userInfo.getRealName());
             roleName.setText(userInfo.getRole());
             schoolName.setText(userInfo.getSchoolName());

@@ -18,12 +18,15 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import unit.entity.StuAcademicLevelInfo;
+import unit.entity.StuBehaviorInfo;
+import unit.entity.StuScoreInfo;
 import unit.moudle.record.adapter.StuRecordAcademicLevelAdapter;
+import unit.moudle.record.adapter.StuRecordCharacterAdapter;
 
 /**
  * Created by ${lei} on 2018/8/1.
  */
-public class StuAcademicLevelHolder extends BaseHolder<StuAcademicLevelInfo> {
+public class StuAcademicLevelHolder extends BaseHolder<StuBehaviorInfo> {
 
     @BindView(R.id.pull_down)
     ImageView pullDown;
@@ -35,7 +38,7 @@ public class StuAcademicLevelHolder extends BaseHolder<StuAcademicLevelInfo> {
     RelativeLayout titleLayout;
 
     private boolean hide;
-    private StuRecordAcademicLevelAdapter mAdapter;
+    private StuRecordCharacterAdapter mAdapter;
 
     public StuAcademicLevelHolder(Context context) {
         super(context);
@@ -58,15 +61,18 @@ public class StuAcademicLevelHolder extends BaseHolder<StuAcademicLevelInfo> {
     }
 
     @Override
-    protected void updateUI(Context context, StuAcademicLevelInfo data) {
+    protected void updateUI(Context context, StuBehaviorInfo data) {
         if (data == null) {
             return;
         }
-
-        List<StuAcademicLevelInfo.StuAcadInfo> stuAcadInfo = data.getStuAcadInfo();
-
-        mAdapter = new StuRecordAcademicLevelAdapter(mContext, (ArrayList<StuAcademicLevelInfo.StuAcadInfo>) stuAcadInfo);
-
+        if (data.getStuScoreInfo().size() > 0) {
+            ArrayList<StuScoreInfo.IndexInfo> stupArrayList = new ArrayList<>();
+            for (int i = 0; i < data.getStuScoreInfo().size(); i++) {
+                StuScoreInfo stuScoreInfo = data.getStuScoreInfo().get(i);
+                stupArrayList.addAll(stuScoreInfo.getIndex());
+            }
+            mAdapter = new StuRecordCharacterAdapter(mContext, stupArrayList);
+        }
         academicList.setAdapter(mAdapter);
     }
 }

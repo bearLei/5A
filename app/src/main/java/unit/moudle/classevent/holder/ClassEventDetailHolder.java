@@ -61,14 +61,14 @@ public class ClassEventDetailHolder extends BaseHolder<DealEntity> {
         notifyLayout.removeAllViews();
         punishLayout.removeAllViews();
         if (data.isNeedValid()){
-            notifyLayout.addView(buildItem("学生处"));
+            notifyLayout.addView(buildItem("本校"));
         }
-        if (data.isNeedParentNotice()){
-            notifyLayout.addView(buildItem("家长"));
-        }
-        if (data.isNeedPsycholog()){
-            notifyLayout.addView(buildItem("心理老师"));
-        }
+//        if (data.isNeedParentNotice()){
+//            notifyLayout.addView(buildItem("家长"));
+//        }
+//        if (data.isNeedPsycholog()){
+//            notifyLayout.addView(buildItem("心理老师"));
+//        }
         if (!TextUtils.isEmpty(data.getPunishment())){
             punishLayout.addView(buildItem(data.getPunishment()));
         }

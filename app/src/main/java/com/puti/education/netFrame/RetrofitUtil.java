@@ -29,10 +29,10 @@ import unit.api.PutiCommonModel;
 public class RetrofitUtil {
 
     //正式环境
-    public static String BASE_URL = "http://54.223.26.249:8083";
+    public static String BASE_URL = "http://54.223.26.249:8085";
     //测试环境
     //public static String BASE_URL  = "http://54.223.26.249:8090/ms/api/";
-    public static String PHOTO_URL = "http://54.223.26.249:8083";
+    public static String PHOTO_URL = "http://54.223.26.249:8085";
 
     //113.98.235.212
     public final static int DEFAULT_ITMEOUT = 30;

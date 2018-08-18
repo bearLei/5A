@@ -145,27 +145,27 @@ public class HomePowerHolder extends BaseHolder<Object>{
                         jump(PutiWorkCheckActivity.class);
                     }
                 }));
-        //校园通讯录
-        mParentView.addView(getItem(
-                R.drawable.puti_home_school_phone_book,
-                R.string.puti_home_school_phone_book,
-                new HomeBaseItemHolder.ItemClickListener() {
-                    @Override
-                    public void itemClick() {
-                        jump(PutiSchoolContactsActivity.class);
-                    }
-                }));
-
-        //家长通讯录
-        mParentView.addView(getItem(
-                R.drawable.puti_home_parent_phone_book,
-                R.string.puti_home_parent_phone_book,
-                new HomeBaseItemHolder.ItemClickListener() {
-                    @Override
-                    public void itemClick() {
-                        jump(PutiParentContactsActivity.class);
-                    }
-                }));
+//        //校园通讯录
+//        mParentView.addView(getItem(
+//                R.drawable.puti_home_school_phone_book,
+//                R.string.puti_home_school_phone_book,
+//                new HomeBaseItemHolder.ItemClickListener() {
+//                    @Override
+//                    public void itemClick() {
+//                        jump(PutiSchoolContactsActivity.class);
+//                    }
+//                }));
+//
+//        //家长通讯录
+//        mParentView.addView(getItem(
+//                R.drawable.puti_home_parent_phone_book,
+//                R.string.puti_home_parent_phone_book,
+//                new HomeBaseItemHolder.ItemClickListener() {
+//                    @Override
+//                    public void itemClick() {
+//                        jump(PutiParentContactsActivity.class);
+//                    }
+//                }));
     }
 
     private View getItem(int iconRes, int titleRes, HomeBaseItemHolder.ItemClickListener listener){

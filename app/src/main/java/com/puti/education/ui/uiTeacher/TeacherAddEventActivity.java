@@ -242,7 +242,7 @@ public class TeacherAddEventActivity extends BaseActivity{
 
     @Override
     public void initViews() {
-        mTitleTv.setText("新增事件");
+        mTitleTv.setText("新增记录");
         //涉事人
         mRightFrame.setVisibility(View.VISIBLE);
         mInvolvePeopleAdapter = new EventAboutPeopleAdapter(this);
@@ -590,12 +590,12 @@ public class TeacherAddEventActivity extends BaseActivity{
                         if (infoObj != null){
                             AddEventResponseBean bean = (AddEventResponseBean)infoObj;
                             if (TextUtils.isEmpty(bean.number)){
-                                ToastUtil.show("新建事件成功");
+                                ToastUtil.show("新建记录成功");
                                 sendBrodcastRefresh();
                                 finish();
                             }
                         }else{
-                            ToastUtil.show("新建事件失败");
+                            ToastUtil.show("新建记录失败");
                         }
                         hideLoading();
                     }
@@ -627,12 +627,12 @@ public class TeacherAddEventActivity extends BaseActivity{
                 if (infoObj != null){
                     AddEventResponseBean bean = (AddEventResponseBean)infoObj;
                     if (TextUtils.isEmpty(bean.number)){
-                        ToastUtil.show("新建事件成功");
+                        ToastUtil.show("新建记录成功");
                         sendBrodcastRefresh();
                         finish();
                     }
                 }else{
-                    ToastUtil.show("新建事件失败");
+                    ToastUtil.show("新建记录失败");
                 }
                 hideLoading();
             }

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/base_ffffff"
-    >
+    android:background="@color/base_ffffff">
     <RelativeLayout
         android:id="@+id/title_layout"
         android:layout_width="match_parent"
@@ -48,6 +48,7 @@
             android:layout_width="@dimen/dp_60"
             android:layout_height="@dimen/dp_60"
             android:layout_centerVertical="true"
+            fresco:roundedCornerRadius = "10dp"
             />
         <RelativeLayout
             android:layout_width="match_parent"

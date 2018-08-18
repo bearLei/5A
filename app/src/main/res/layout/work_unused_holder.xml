@@ -10,7 +10,7 @@
         android:layout_height="@dimen/dp_50"
         android:background="@color/base_39BCA1"
         android:paddingLeft="@dimen/dp_30"
-        android:text="事件未录入"
+        android:text="记录未录入"
         android:gravity="center_vertical"
         android:textSize="@dimen/sp_16"
         android:textColor="@color/base_333333"

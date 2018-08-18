@@ -55,7 +55,7 @@ public class HomePtr implements BaseMvpPtr {
     private HomeCountHolder mCountHolder;//个人统计信息
     private HomePowerHolder mPowerHolder;//能力栏
     private HomeFeedBackHolder mFeedBackHolder;//有奖反馈
-//    private HomeToolHolder mToolHolder;//工具栏
+    private HomeToolHolder mToolHolder;//工具栏
     public HomePtr(Context mContext, HomeView mView) {
         this.mContext = mContext;
         this.mView = mView;
@@ -70,7 +70,7 @@ public class HomePtr implements BaseMvpPtr {
         initCountHolder();
         initPowerHolder();
         initFeedBackHolder();
-//        initToolHolder();
+        initToolHolder();
     }
 
     @Override
@@ -125,13 +125,13 @@ public class HomePtr implements BaseMvpPtr {
     }
 
     //初始化工具栏
-//    private void initToolHolder(){
-//        if (mToolHolder == null){
-//            mToolHolder = new HomeToolHolder(mContext);
-//            mToolHolder.setData(true);
-//        }
-//        mView.addToolLayout(operateSize(mToolHolder));
-//    }
+    private void initToolHolder(){
+        if (mToolHolder == null){
+            mToolHolder = new HomeToolHolder(mContext);
+            mToolHolder.setData(true);
+        }
+        mView.addToolLayout(operateSize(mToolHolder));
+    }
 
     private View operateSize(BaseHolder holder){
         View rootView = holder.getRootView();

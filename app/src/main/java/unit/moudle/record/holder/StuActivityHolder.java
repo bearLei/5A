@@ -18,14 +18,17 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import unit.entity.StuActivityInfo;
+import unit.entity.StuBehaviorInfo;
 import unit.entity.StuMor;
 import unit.entity.StuMoraInfo;
+import unit.entity.StuScoreInfo;
 import unit.moudle.record.adapter.StuRecordActivityAdapter;
+import unit.moudle.record.adapter.StuRecordCharacterAdapter;
 
 /**
  * Created by ${lei} on 2018/8/2.
  */
-public class StuActivityHolder extends BaseHolder<StuActivityInfo> {
+public class StuActivityHolder extends BaseHolder<StuBehaviorInfo> {
 
     @BindView(R.id.title)
     TextView title;
@@ -38,7 +41,7 @@ public class StuActivityHolder extends BaseHolder<StuActivityInfo> {
 
     private boolean hide;
 
-    private StuRecordActivityAdapter mAdapter;
+    private StuRecordCharacterAdapter mAdapter;
 
     public StuActivityHolder(Context context) {
         super(context);
@@ -61,20 +64,19 @@ public class StuActivityHolder extends BaseHolder<StuActivityInfo> {
     }
 
     @Override
-    protected void updateUI(Context context, StuActivityInfo data) {
+    protected void updateUI(Context context, StuBehaviorInfo data) {
 
         if (data == null) {
             return;
         }
-
-        List<StuMoraInfo> stuMoraInfo = data.getStuMoraInfo();
-        ArrayList<StuMor> stuMors = new ArrayList<>();
-        for (int i = 0; i < stuMoraInfo.size(); i++) {
-            stuMors.addAll(stuMoraInfo.get(i).getStuMor());
+        if (data.getStuScoreInfo().size() > 0) {
+            ArrayList<StuScoreInfo.IndexInfo> stupArrayList = new ArrayList<>();
+            for (int i = 0; i < data.getStuScoreInfo().size(); i++) {
+                StuScoreInfo stuScoreInfo = data.getStuScoreInfo().get(i);
+                stupArrayList.addAll(stuScoreInfo.getIndex());
+            }
+            mAdapter = new StuRecordCharacterAdapter(mContext, stupArrayList);
         }
-
-        mAdapter = new StuRecordActivityAdapter(mContext, stuMors);
-
         activityList.setAdapter(mAdapter);
     }
 }

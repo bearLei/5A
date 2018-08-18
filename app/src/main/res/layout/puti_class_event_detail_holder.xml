@@ -75,7 +75,7 @@
                 android:gravity="top|left"
                 android:textSize="@dimen/sp_14"
                 android:textColor="@color/base_666666"
-                android:text="通知"
+                android:text="公示"
                 android:minWidth="@dimen/dp_50"
                 />
 

@@ -16,14 +16,16 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import unit.entity.StuBehaviorInfo;
 import unit.entity.StuCharacterInfo;
+import unit.entity.StuScoreInfo;
 import unit.entity.Stup;
 import unit.moudle.record.adapter.StuRecordCharacterAdapter;
 
 /**
  * Created by ${lei} on 2018/8/1.
  */
-public class StuMoralCharacterHolder extends BaseHolder<StuCharacterInfo> {
+public class StuMoralCharacterHolder extends BaseHolder<StuBehaviorInfo> {
 
 
     @BindView(R.id.pull_down)
@@ -59,15 +61,15 @@ public class StuMoralCharacterHolder extends BaseHolder<StuCharacterInfo> {
     }
 
     @Override
-    protected void updateUI(Context context, StuCharacterInfo data) {
+    protected void updateUI(Context context, StuBehaviorInfo data) {
         if (data == null) {
             return;
         }
-        if (data.getStuCharInfo().size() > 0) {
-            ArrayList<Stup> stupArrayList = new ArrayList<>();
-            for (int i = 0; i < data.getStuCharInfo().size(); i++) {
-                StuCharacterInfo.StuCharInfo stuCharInfo = data.getStuCharInfo().get(i);
-                stupArrayList.addAll(stuCharInfo.getStuP());
+        if (data.getStuScoreInfo().size() > 0) {
+            ArrayList<StuScoreInfo.IndexInfo> stupArrayList = new ArrayList<>();
+            for (int i = 0; i < data.getStuScoreInfo().size(); i++) {
+                StuScoreInfo stuScoreInfo = data.getStuScoreInfo().get(i);
+                stupArrayList.addAll(stuScoreInfo.getIndex());
             }
             mAdapter = new StuRecordCharacterAdapter(mContext, stupArrayList);
         }

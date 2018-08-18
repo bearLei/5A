@@ -21,9 +21,9 @@ import unit.entity.StuMor;
 public class StuRecordHealthAdapter extends BaseAdapter {
 
     private Context context;
-    private ArrayList<StuHealth> mData;
+    private ArrayList<StuHealthMor> mData;
 
-    public StuRecordHealthAdapter(Context context, ArrayList<StuHealth> mData) {
+    public StuRecordHealthAdapter(Context context, ArrayList<StuHealthMor> mData) {
         this.context = context;
         this.mData = mData;
     }
@@ -61,13 +61,13 @@ public class StuRecordHealthAdapter extends BaseAdapter {
         }
         holder = (ViewHolder) convertView.getTag();
 
-        StuHealth stuHealth = mData.get(position);
+        StuHealthMor stuHealth = mData.get(position);
         holder.index.setText(String.valueOf(position+1));
-        if (stuHealth != null) {
-            holder.eventType.setText(stuHealth.getTitle());
-            holder.score.setText(String.valueOf(stuHealth.getScore()));
-            holder.term.setText(stuHealth.getValue()+stuHealth.getUnit());
-        }
+//        if (stuHealth != null) {
+//            holder.eventType.setText(stuHealth.getTitle());
+//            holder.score.setText(String.valueOf(stuHealth.getScore()));
+//            holder.term.setText(stuHealth.getValue()+stuHealth.getUnit());
+//        }
         return convertView;
     }
 

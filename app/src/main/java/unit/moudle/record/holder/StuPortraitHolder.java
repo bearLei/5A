@@ -86,6 +86,11 @@ public class StuPortraitHolder extends BaseHolder<StudentPortraitInfo> {
 
         if (studentInfoms != null) {
             avatar.setImageURI(studentInfoms.getPhtot());
+            if (studentInfoms.getSex().equals("F")){
+               avatar.getHierarchy().setPlaceholderImage(R.drawable.puti_avatar_f);
+            }else{
+                avatar.getHierarchy().setPlaceholderImage(R.drawable.puti_avatar_m);
+            }
             className.setText(studentInfoms.getClassName());
             majorName.setText(studentInfoms.getProfessionalName());
             time.setText(studentInfoms.getStatusTime());

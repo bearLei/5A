@@ -124,8 +124,13 @@ public class DealEventDetailPunishHolder extends BaseHolder<Event2Involved> {
             Map.Entry<TextView, Boolean> entry = iterator.next();
             TextView item = entry.getKey();
             if (view == item){
-                mViewSelectedMap.put(item,true);
-                oprateDrawble(item,true);
+                if (mViewSelectedMap.get(item)){
+                    mViewSelectedMap.put(item,false);
+                    oprateDrawble(item,false);
+                }else {
+                    mViewSelectedMap.put(item, true);
+                    oprateDrawble(item, true);
+                }
             }else {
                 mViewSelectedMap.put(item,false);
                 oprateDrawble(item,false);

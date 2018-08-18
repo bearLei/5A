@@ -22,7 +22,7 @@
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             fresco:roundAsCircle="true"
-            fresco:placeholderImage = "@mipmap/ic_avatar_default"
+            fresco:placeholderImage = "@drawable/puti_avatar_m"
             />
         <!--昵称-->
         <TextView

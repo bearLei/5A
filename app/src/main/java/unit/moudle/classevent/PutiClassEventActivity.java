@@ -89,7 +89,7 @@ public class PutiClassEventActivity extends PutiActivity implements ClassEventVi
                 finish();
             }
         });
-        headview.setTitle("班级事件");
+        headview.setTitle("班级记录");
 
         if (mData == null) {
             mData = new ArrayList<>();

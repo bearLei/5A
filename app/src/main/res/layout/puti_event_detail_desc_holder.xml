@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="@dimen/dp_100"
-        android:hint="请输入"
+        android:hint="请尽量描述记录发生地点和过程"
         android:textColorHint="@color/base_acb2c1"
         android:textSize="14sp"
         android:layout_marginTop="@dimen/dp_15"

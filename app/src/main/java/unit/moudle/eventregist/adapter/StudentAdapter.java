@@ -113,6 +113,11 @@ public class StudentAdapter extends BaseAdapter {
             }
         }
         holder.avatar.setImageURI(student.getPhoto());
+        if (student.getSex().equals("F")){
+            holder.avatar.getHierarchy().setPlaceholderImage(R.drawable.puti_avatar_f);
+        }else{
+            holder.avatar.getHierarchy().setPlaceholderImage(R.drawable.puti_avatar_m);
+        }
         holder.name.setText(student.getRealName());
         return convertView;
     }

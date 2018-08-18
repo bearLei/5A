@@ -73,9 +73,9 @@ public class WorkEventCountHolder extends BaseHolder<PutiWeekEventImp> {
 
         //设置desc
         StringBuilder builder = new StringBuilder();
-        builder.append("本学期共发生事件 ")
+        builder.append("本学期共发生记录 ")
                 .append(String.valueOf(summary.getTotal()))
-                .append(" 件").append("    其中重点事件 ");
+                .append(" 件").append("    其中重点记录 ");
 
         StringBuilder importBuilder = new StringBuilder();
         importBuilder.append(String.valueOf(summary.getImportant()))

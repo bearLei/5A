@@ -17,16 +17,20 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import unit.entity.StuBehaviorInfo;
 import unit.entity.StuHealth;
 import unit.entity.StuHealthInfo;
 import unit.entity.StuHealthMor;
 import unit.entity.StuHealthMoraInfo;
+import unit.entity.StuMor;
+import unit.entity.StuScoreInfo;
+import unit.moudle.record.adapter.StuRecordCharacterAdapter;
 import unit.moudle.record.adapter.StuRecordHealthAdapter;
 
 /**
  * Created by ${lei} on 2018/8/2.
  */
-public class StuHealthHolder extends BaseHolder<StuHealthInfo> {
+public class StuHealthHolder extends BaseHolder<StuBehaviorInfo> {
     @BindView(R.id.pull_down)
     ImageView pullDown;
     @BindView(R.id.title)
@@ -37,7 +41,7 @@ public class StuHealthHolder extends BaseHolder<StuHealthInfo> {
     RelativeLayout titleLayout;
 
     private boolean hide;
-    private StuRecordHealthAdapter mAdapter;
+    private StuRecordCharacterAdapter mAdapter;
 
     public StuHealthHolder(Context context) {
         super(context);
@@ -60,20 +64,18 @@ public class StuHealthHolder extends BaseHolder<StuHealthInfo> {
     }
 
     @Override
-    protected void updateUI(Context context, StuHealthInfo data) {
+    protected void updateUI(Context context, StuBehaviorInfo data) {
         if (data == null) {
             return;
         }
-        List<StuHealth> stuMoraInfo = data.getStuHealth();
-
-//        ArrayList<StuHealth> stuHealths = new ArrayList<>();
-//
-//        for (int i = 0; i < stuMoraInfo.size(); i++) {
-//            stuHealths.addAll(stuMoraInfo.get(i).getStuMor());
-//        }
-
-        mAdapter = new StuRecordHealthAdapter(mContext, (ArrayList<StuHealth>) stuMoraInfo);
-
+        if (data.getStuScoreInfo().size() > 0) {
+            ArrayList<StuScoreInfo.IndexInfo> stupArrayList = new ArrayList<>();
+            for (int i = 0; i < data.getStuScoreInfo().size(); i++) {
+                StuScoreInfo stuScoreInfo = data.getStuScoreInfo().get(i);
+                stupArrayList.addAll(stuScoreInfo.getIndex());
+            }
+            mAdapter = new StuRecordCharacterAdapter(mContext, stupArrayList);
+        }
         healthList.setAdapter(mAdapter);
     }
 }
